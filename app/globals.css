@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root {
+  --brand-dark: #1a1a1a;
+  --brand-yellow: #fbbf24;
+  --brand-yellow-hover: #d97706;
+  --brand-light: #f3f4f6;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+html, body { overflow-x: hidden; }
+
+
+:root {
+  /* Standard (Mobile) */
+  --logo-h: 40px;   /* ≈ h-10 */
+  --logo-h-lg: 64px; /* ≈ h-16 */
+}
+
+/* Optional: ab lg-Viewport die Desktop-Höhe aktivieren */
+@media (min-width: 1024px) {
+  :root {
+    --logo-h-current: var(--logo-h-lg);
+  }
+}
+
+/* Fallback: wenn kein @media greift, nimm mobile Höhe */
+:root {
+  --logo-h-current: var(--logo-h);
+}
