@@ -1,12 +1,17 @@
 "use client";
 import { useState } from 'react';
-import { Phone, Clock, MapPin, CheckCircle2, ArrowRight, Mail } from 'lucide-react';
+import { Phone, Clock, MapPin, CheckCircle2, ArrowRight, Mail, AlertCircle, X } from 'lucide-react';
 import Link from 'next/link';
 import { COMPANY, ROUTES } from '@/lib/config';
 
+interface MessageState {
+  type: 'success' | 'error' | null;
+  text: string;
+}
+
 const Hero = () => {
   const [submitting, setSubmitting] = useState(false);
-  const [showThanks, setShowThanks] = useState(false);
+  const [message, setMessage] = useState<MessageState>({ type: null, text: '' });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,14 +31,15 @@ const Hero = () => {
 
       if (res.ok) {
         form.reset();
-        setShowThanks(true);
+        setMessage({ type: 'success', text: 'Ihre Anfrage wurde erfolgreich versendet! Wir melden uns schnellstmöglich bei Ihnen.' });
       } else {
         const data = await res.json().catch(() => ({}));
-        alert((data && data.error) || 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später.');
+        const errorText = (data && data.error) || 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später.';
+        setMessage({ type: 'error', text: errorText });
       }
     } catch (err) {
       console.error('Submit error', err);
-      alert('Fehler beim Senden der Anfrage. Bitte versuchen Sie es später.');
+      setMessage({ type: 'error', text: 'Fehler beim Senden der Anfrage. Bitte versuchen Sie es später.' });
     } finally {
       setSubmitting(false);
     }
@@ -271,15 +277,47 @@ const Hero = () => {
         </div>
       </div>
     </section>
-    {showThanks && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/60" onClick={() => setShowThanks(false)} />
-        <div className="relative z-10 max-w-md w-full p-6 bg-black/60 rounded-lg border border-white/10 text-center shadow-lg">
-          <h2 className="text-2xl font-extrabold text-white mb-3">Danke für Ihre Anfrage</h2>
-          <p className="text-slate-300 mb-6">Wir haben Ihre Nachricht erhalten und melden uns schnellstmöglich bei Ihnen.</p>
+    {message.type && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="absolute inset-0 bg-black/60" onClick={() => setMessage({ type: null, text: '' })} />
+        <div className={`relative z-10 max-w-md w-full p-6 rounded-lg border shadow-2xl backdrop-blur-sm ${
+          message.type === 'success'
+            ? 'bg-green-950/80 border-green-500/30'
+            : 'bg-red-950/80 border-red-500/30'
+        }`}>
+          <div className="flex items-start gap-4">
+            {message.type === 'success' ? (
+              <CheckCircle2 className="w-6 h-6 text-green-400 shrink-0 mt-0.5" />
+            ) : (
+              <AlertCircle className="w-6 h-6 text-red-400 shrink-0 mt-0.5" />
+            )}
+            <div className="flex-1">
+              <h2 className={`text-xl font-extrabold mb-2 ${
+                message.type === 'success' ? 'text-green-100' : 'text-red-100'
+              }`}>
+                {message.type === 'success' ? 'Danke für Ihre Anfrage' : 'Fehler beim Versand'}
+              </h2>
+              <p className={`text-sm mb-4 ${
+                message.type === 'success' ? 'text-green-200' : 'text-red-200'
+              }`}>
+                {message.text}
+              </p>
+            </div>
+            <button
+              onClick={() => setMessage({ type: null, text: '' })}
+              className="text-slate-400 hover:text-white transition"
+              aria-label="Schließen"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
           <button
-            onClick={() => setShowThanks(false)}
-            className="inline-block bg-brand-yellow text-brand-dark font-semibold py-2 px-4 rounded"
+            onClick={() => setMessage({ type: null, text: '' })}
+            className={`w-full mt-4 font-semibold py-2 px-4 rounded transition ${
+              message.type === 'success'
+                ? 'bg-green-600 hover:bg-green-700 text-white'
+                : 'bg-red-600 hover:bg-red-700 text-white'
+            }`}
           >
             Schließen
           </button>

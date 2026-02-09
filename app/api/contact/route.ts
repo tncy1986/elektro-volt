@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { COMPANY } from '@/lib/config';
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,9 +44,12 @@ export async function POST(request: NextRequest) {
         user: smtpUser,
         pass: smtpPass,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
 
-    const toAddress = process.env.CONTACT_TO || process.env.NEXT_PUBLIC_COMPANY_EMAIL || smtpUser;
+    const toAddress = process.env.CONTACT_TO || COMPANY.email || smtpUser;
     const subject = _subject || 'Neue Anfrage über die Website';
 
     await transporter.sendMail({
