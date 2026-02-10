@@ -1,6 +1,17 @@
+import { Metadata } from 'next';
 import Services from '@/components/Services';
 import { Phone } from 'lucide-react';
 import { COMPANY } from '@/lib/config';
+
+export const metadata: Metadata = {
+  title: 'Unsere Leistungen - Elektroinstallation, Notdienst & E-Befund Wien',
+  description: 'Professionelle Elektro-Leistungen in Wien: Installationen, 24/7 Notdienst, E-Befund, Smart Home, Sicherungskästen. Alle Arbeiten aus Meisterhand.',
+  keywords: ['Elektroinstallation Wien', 'E-Befund Wien', 'Smart Home Wien', 'Elektriker Leistungen', 'Sicherungskasten'],
+  openGraph: {
+    title: 'Elektro-Leistungen Wien | Vom Notdienst bis Smart Home',
+    description: 'Alle Elektro-Leistungen für Wien: Installation, Wartung, Notdienst, E-Befund & mehr.',
+  },
+};
 
 export default function ServicesPage() {
   return (

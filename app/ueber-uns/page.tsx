@@ -1,6 +1,17 @@
+import { Metadata } from 'next';
 import WhyUs from '@/components/WhyUs';
 import { COMPANY } from '@/lib/config';
 import { CheckCircle2 } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Über uns - Meisterbetrieb für Elektrotechnik in Wien',
+  description: 'Elektro Volt Wien: Ihr verlässlicher Elektriker-Meisterbetrieb seit Jahren. Qualität, Sicherheit und persönlicher Service für alle Wiener Bezirke.',
+  keywords: ['Elektriker Meisterbetrieb Wien', 'Über Elektro Volt', 'Elektriker Team Wien'],
+  openGraph: {
+    title: 'Über Elektro Volt Wien | Ihr Meisterbetrieb',
+    description: 'Traditionelles Handwerk trifft moderne Technik. Ihr Elektriker in Wien.',
+  },
+};
 
 export default function AboutPage() {
   return (
