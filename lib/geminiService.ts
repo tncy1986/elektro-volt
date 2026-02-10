@@ -1,10 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-// Initialize the Gemini client
-// Note: In a real production app, ensure API_KEY is set in environment variables.
-// We assume process.env.GEMINI_API_KEY is available as per instructions.
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
-
 export interface EmergencyAdvice {
   urgency: 'NIEDRIG' | 'MITTEL' | 'HOCH' | 'LEBENSGEFAHR';
   safetyTips: string[];
@@ -14,6 +9,20 @@ export interface EmergencyAdvice {
 
 export const analyzeEmergency = async (userDescription: string): Promise<EmergencyAdvice> => {
   try {
+    // Check if API key is available
+    if (!process.env.GEMINI_API_KEY) {
+      console.warn('GEMINI_API_KEY not set, using fallback response');
+      return {
+        urgency: 'HOCH',
+        safetyTips: ['Sicherung ausschalten', 'Geräte nicht anfassen', 'Bitte rufen Sie uns direkt an'],
+        estimatedCostRange: 'Auf Anfrage',
+        summary: 'Automatische Analyse nicht verfügbar. Bitte kontaktieren Sie uns telefonisch für eine Notfallberatung.'
+      };
+    }
+
+    // Initialize the Gemini client only when needed
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    
     const model = 'gemini-3-flash-preview';
 
     const prompt = `
