@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
 import { COMPANY } from '@/lib/config';
 
@@ -23,6 +24,33 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Nachricht ist zu kurz (mind. 10 Zeichen).' }, { status: 400 });
     }
 
+    const toAddress = process.env.CONTACT_TO || COMPANY.email;
+    const subject = _subject || 'Neue Anfrage über die Website';
+    const emailText = [
+      `Name: ${name}`,
+      `E-Mail: ${email}`,
+      phone ? `Telefon: ${phone}` : 'Telefon: -',
+      '',
+      'Nachricht:',
+      message,
+    ].join('\n');
+
+    // Option 1: Use Resend if API key is available (recommended)
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      
+      await resend.emails.send({
+        from: process.env.RESEND_FROM || 'onboarding@resend.dev',
+        to: toAddress,
+        replyTo: email,
+        subject,
+        text: emailText,
+      });
+
+      return NextResponse.json({ ok: true });
+    }
+
+    // Option 2: Fallback to SMTP
     const smtpHost = process.env.SMTP_HOST;
     const smtpPort = Number(process.env.SMTP_PORT || 587);
     const smtpUser = process.env.SMTP_USER;
@@ -31,7 +59,7 @@ export async function POST(request: NextRequest) {
 
     if (!smtpHost || !smtpUser || !smtpPass) {
       return NextResponse.json(
-        { error: 'E-Mail-Versand ist nicht konfiguriert (SMTP-Daten fehlen).' },
+        { error: 'E-Mail-Versand ist nicht konfiguriert. Bitte kontaktieren Sie uns telefonisch.' },
         { status: 500 }
       );
     }
@@ -49,22 +77,12 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    const toAddress = process.env.CONTACT_TO || COMPANY.email || smtpUser;
-    const subject = _subject || 'Neue Anfrage über die Website';
-
     await transporter.sendMail({
-      from: `${name} <${email}>`,
+      from: `${name} <${smtpUser}>`,
       to: toAddress,
       replyTo: email,
       subject,
-      text: [
-        `Name: ${name}`,
-        `E-Mail: ${email}`,
-        phone ? `Telefon: ${phone}` : 'Telefon: -',
-        '',
-        'Nachricht:',
-        message,
-      ].join('\n'),
+      text: emailText,
     });
 
     return NextResponse.json({ ok: true });
