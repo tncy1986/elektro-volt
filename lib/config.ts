@@ -34,6 +34,7 @@ serviceArea: 'Einsatzgebiet ganz Wien',
   logoUrl: process.env.NEXT_PUBLIC_LOGO_URL || "/picture/headerLogo3D_100x100.png", // If null, uses text logo
   firmenlogoUrl: process.env.NEXT_PUBLIC_FIRMENLOGO_URL || "/picture/image.png",
   licht_ins_dunkel_Url: process.env.NEXT_PUBLIC_LICHT_INS_DUNKEL_URL || "/picture/wir_bringen_Licht_ins_dunkel.png",
+  firmenlogo3DUrl: process.env.NEXT_PUBLIC_FIRMENLOGO_3D_URL || "/picture/firmenlogo3D.png",
   teamsUrl: process.env.NEXT_PUBLIC_TEAMS_URL || "/picture/firmenlogo3D.png",
   heroImage: process.env.NEXT_PUBLIC_HERO_IMAGE || "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop",
   mapImage: process.env.NEXT_PUBLIC_MAP_IMAGE || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.7192643!2d16.3738!3d48.2082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d079f54bef725%3A0x1234567890!2sWien!5e0!3m2!1sde!2sat!4v1234567890",

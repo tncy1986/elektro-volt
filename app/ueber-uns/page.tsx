@@ -18,7 +18,7 @@ export default function AboutPage() {
     <div className="min-h-screen">
       <div className="bg-brand-dark text-white py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
-           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">Über {COMPANY.name}</h1>
+           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">Über {COMPANY.nameWithoutKG}</h1>
            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
              Traditionelles Handwerk trifft auf moderne Technik. Seit vielen Jahren sind wir der vertrauensvolle Partner für Wien.<br />
              Wir verbinden Fachwissen mit persönlichem Service und begleiten von der Beratung über die Planung bis zur fachgerechten Umsetzung aller elektrotechnischen Arbeiten – zuverlässig, sauber und termingerecht.
@@ -51,8 +51,12 @@ export default function AboutPage() {
                     ))}
                 </div>
             </div>
-            <div className="overflow-hidden transition duration-500">
-                <img src={COMPANY.teamsUrl} alt="Team bei der Arbeit" className="max-w-lg h-auto opacity-80" />
+            <div className="flex justify-center items-center">
+                <img 
+                    src={COMPANY.firmenlogo3DUrl} 
+                    alt="Team bei der Arbeit" 
+                    className="w-full max-w-md md:max-w-lg h-auto object-contain opacity-80" 
+                />
             </div>
         </div>
       </div>
