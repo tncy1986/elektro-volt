@@ -22,7 +22,7 @@ const Header = () => {
     'py-3 border-b border-slate-800 hover:bg-slate-800 hover:text-brand-yellow transition';
 
   return (
-    <header className="sticky top-0 z-50 bg-brand-dark text-white shadow-md border-b border-slate-800 supports-[backdrop-filter]:bg-brand-dark/90 backdrop-blur">
+    <header className="fixed top-0 left-0 right-0 w-full z-50 bg-brand-dark text-white shadow-md border-b border-slate-800 supports-[backdrop-filter]:bg-brand-dark/90 backdrop-blur">
       {/* Fixe Höhe statt py-* */}
       <div className="container mx-auto px-4 h-16 md:h-[4.5rem] lg:h-20 flex items-center gap-4">
         {/* Logo */}
@@ -32,21 +32,31 @@ const Header = () => {
           aria-label="Startseite"
         >
           {COMPANY.logoUrl ? (
-            <Image
-              src={COMPANY.logoUrl}
-              alt={COMPANY.name}
-              width={256}               // intrinsische Größe (Quelle darf größer sein)
-              height={80}
-              priority                   // Logo = above-the-fold
-              sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, 160px"
-              className="
-                block w-auto object-contain
-                h-full                   /* füllt die Höhe des flex-Containers */
-                max-h-[2.75rem]          /* ~44px für h-16 (4rem minus etwas Innenluft) */
-                md:max-h-[3.25rem]       /* ~52px für h-[4.5rem] */
-                lg:max-h-[3.75rem]       /* ~60px für h-20 (5rem) */
-              "
-            />
+            <>
+              <Image
+                src={COMPANY.logoUrl}
+                alt={COMPANY.name}
+                width={256}               // intrinsische Größe (Quelle darf größer sein)
+                height={80}
+                priority                   // Logo = above-the-fold
+                sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, 160px"
+                className="
+                  block w-auto object-contain
+                  h-full                   /* füllt die Höhe des flex-Containers */
+                  max-h-[2.75rem]          /* ~44px für h-16 (4rem minus etwas Innenluft) */
+                  md:max-h-[3.25rem]       /* ~52px für h-[4.5rem] */
+                  lg:max-h-[3.75rem]       /* ~60px für h-20 (5rem) */
+                "
+              />
+              <div className="hidden lg:flex flex-col">
+                <span className="block text-lg font-extrabold leading-none tracking-tight">
+                  {COMPANY.name.toUpperCase()}
+                </span>
+                <span className="text-[10px] text-slate-400 font-medium tracking-widest uppercase">
+                  Meisterbetrieb
+                </span>
+              </div>
+            </>
           ) : (
             <>
               <div className="bg-brand-yellow p-2 rounded-lg group-hover:rotate-12 transition-transform">
@@ -105,17 +115,15 @@ const Header = () => {
 
         {/* CTA + Social (Desktop) */}
         <div className="hidden md:flex items-center gap-4 lg:gap-6 shrink-0">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
           <a
             href={COMPANY.whatsappLink}
             target="_blank"
             rel="noreferrer"
-            className="w-11 h-11 rounded-full bg-[#25D366] hover:bg-[#22c45e] flex items-center justify-center transition-all hover:scale-110 shadow-lg ring-1 ring-white/20 hover:ring-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+            className="w-10 h-10 rounded-full bg-[#25D366] hover:bg-[#22c45e] flex items-center justify-center transition-all hover:scale-110 shadow-lg ring-1 ring-white/20 hover:ring-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             aria-label="WhatsApp"
             title="WhatsApp"
           >
-            <i className="fa-brands fa-whatsapp text-white text-2xl leading-none" />
+            <i className="fa-brands fa-whatsapp text-white text-xl leading-none" />
           </a>
 
           {/* 
@@ -150,7 +158,7 @@ const Header = () => {
 
       {/* Mobile Nav */}
       {isMenuOpen && (
-        <div className="md:hidden bg-brand-dark text-white border-t border-slate-800 absolute w-full shadow-xl">
+        <div className="md:hidden bg-slate-800 text-white border-t border-slate-700 absolute w-full shadow-xl">
           <nav className="flex flex-col text-center font-medium">
             <Link href={ROUTES.home} onClick={toggleMenu} className={mobileLinkClass}>Startseite</Link>
             <Link href={ROUTES.services} onClick={toggleMenu} className={mobileLinkClass}>Leistungen</Link>
@@ -164,18 +172,15 @@ const Header = () => {
               Notdienst: {COMPANY.phoneDisplay}
             </a>
             <div className="flex justify-center gap-6 py-4 border-t border-slate-800">
-
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
               <a
                 href={COMPANY.whatsappLink}
                 target="_blank"
                 rel="noreferrer"
-                className="w-11 h-11 rounded-full bg-[#25D366] hover:bg-[#22c45e] flex items-center justify-center transition-all hover:scale-110 shadow-lg ring-1 ring-white/20 hover:ring-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+                className="w-10 h-10 rounded-full bg-[#25D366] hover:bg-[#22c45e] flex items-center justify-center transition-all hover:scale-110 shadow-lg ring-1 ring-white/20 hover:ring-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                 aria-label="WhatsApp"
                 title="WhatsApp"
               >
-                <i className="fa-brands fa-whatsapp text-white text-2xl leading-none" />
+                <i className="fa-brands fa-whatsapp text-white text-xl leading-none" />
               </a>
 
               {/*

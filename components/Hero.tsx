@@ -138,7 +138,7 @@ const Hero = () => {
                 </span>
               </li>     
 
-              {/* Google Maps */}
+              {/* Google Maps
               <div className="mt-1 w-full h-52 rounded overflow-hidden shadow-inner">
                 <iframe
                   src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.7!2d16.3738!3d48.2082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d!2s${encodeURIComponent(COMPANY.addressFull)}!5e0!3m2!1sde!2sat!4v1234567890`}
@@ -149,6 +149,7 @@ const Hero = () => {
                   loading="lazy"
                 />
               </div>
+              */}
 
             </div>
           
@@ -170,7 +171,7 @@ const Hero = () => {
           <div className="md:justify-self-end w-full">
             <div className="bg-black/55 backdrop-blur-sm border border-white/10 rounded-xl p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.35)] max-w-md ml-auto">
 
-              <h3 className="text-xl font-bold text-white mb-1">Jetzt Anfrage senden</h3>
+              <h3 className="text-xl font-bold text-white mb-1">Jetzt Anfrage senden oder direkt anrufen</h3>
               <p className="text-sm text-slate-300 mb-4">
                 Wir melden uns schnellstmöglich bei Ihnen zurück.
               </p>
@@ -262,7 +263,7 @@ const Hero = () => {
               </form>
 
               <div className="mt-4 text-center">
-                <p className="text-xs text-slate-400">Oder direkt anrufen</p>
+                {/*<p className="text-xs text-slate-400">Oder direkt anrufen</p>*/}
                 <a
                   href={`tel:${COMPANY.phone.replace(/\s/g, '')}`}
                   className="inline-flex items-center gap-2 mt-1 text-brand-yellow font-semibold"

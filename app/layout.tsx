@@ -84,11 +84,12 @@ export default function RootLayout({
   return (
     <html lang="de">
       <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
         <LocalBusinessSchema />
       </head>
       <body className={`font-sans antialiased text-slate-900 bg-slate-50 min-h-screen flex flex-col`}>
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow pt-16 md:pt-[4.5rem] lg:pt-20">{children}</main>
         <Footer />
         <CookieBanner />
 
