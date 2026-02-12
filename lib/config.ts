@@ -14,6 +14,8 @@ export const COMPANY = {
   firmenbuchNummer: process.env.NEXT_PUBLIC_COMPANY_FIRMA_NUMMER || "FN 123456x (Muster)",
   gerichtsstand: process.env.NEXT_PUBLIC_COMPANY_GERICHTSSTAND || "Wien",
   wkoMitglied: process.env.NEXT_PUBLIC_COMPANY_WKO_MEMBER || "Ja",
+  meisterBetrieb: process.env.NEXT_PUBLIC_COMPANY_MEISTERBETRIEB || "Meisterbetrieb",
+  notDienstBereit: process.env.NEXT_PUBLIC_COMPANY_24_7_NOTDIENST || "24/7 Notdienst bereit",
 
   
 addressLine: 'Pirkebnerstrasse 1-3/1/2, 1120 Wien',

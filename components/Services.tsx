@@ -5,12 +5,12 @@ import services from '@/lib/services';
 
 const Services = () => {
   return (
-    <section id="services" className="py-20 bg-slate-50">
+    <section id="services" className="py-12 bg-slate-50">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Unsere Leistungen</h2>
           <div className="w-20 h-1 bg-brand-yellow mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600">
+          <p className="text-sm text-slate-900">
             Wir bieten ein breites Spektrum an elektrotechnischen Dienstleistungen für Privat- und Gewerbekunden in ganz Wien.
           </p>
         </div>
@@ -30,7 +30,7 @@ const Services = () => {
                   {service.title}
                 </h3>
               </div>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-900 leading-relaxed">
                 {service.description}
               </p>
               {/* Optional: Link to service details page if available 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Menu, X, Zap } from 'lucide-react';
+import { Phone, Menu, X, Zap, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -48,14 +48,22 @@ const Header = () => {
                   lg:max-h-[3.75rem]       /* ~60px für h-20 (5rem) */
                 "
               />
+              
               <div className="hidden lg:flex flex-col">
                 <span className="block text-lg font-extrabold leading-none tracking-tight">
                   {COMPANY.name.toUpperCase()}
                 </span>
-                <span className="text-[10px] text-slate-400 font-medium tracking-widest uppercase">
+                {/*
+                <div className="inline-flex items-center text-white px-3 py-1 rounded text-[10px] font-bold tracking-wide mt-1 w-fit shadow-sm">
+                  <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse" />
                   Meisterbetrieb
-                </span>
+                </div>*/} 
+              <div className="flex items-center mt-1">
+                <CheckCircle2 className="w-1.5 h-1.5 sm:w-3 sm:h-3 mr-1.5 text-brand-yellow" />
+                <span className="text-[9px] sm:text-[10px]">{COMPANY.meisterBetrieb.toUpperCase()}</span>
               </div>
+            </div>         
+
             </>
           ) : (
             <>
@@ -66,9 +74,10 @@ const Header = () => {
                 <span className="block text-xl font-extrabold leading-none tracking-tight">
                   {COMPANY.name.toUpperCase()}
                 </span>
-                <span className="text-[10px] text-slate-400 font-medium tracking-widest uppercase">
+                <div className="inline-flex items-center text-white px-3 py-1 rounded text-[10px] font-bold tracking-wide mt-2 w-fit shadow-sm">
+                  <span className="w-1.5 h-1.5 bg-white rounded-full mr-2 animate-pulse" />
                   Meisterbetrieb
-                </span>
+                </div>
               </div>
             </>
           )}

@@ -8,7 +8,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Kontaktieren Sie uns</h2>
           <div className="w-16 h-1.5 bg-brand-yellow mx-auto mb-6"></div>
-          <p className="text-lg text-slate-600">
+          <p className="text-sm text-slate-600">
             Wir sind 24/7 für Sie erreichbar. Rufen Sie uns an oder schreiben Sie uns.
           </p>
         </div>
@@ -20,8 +20,8 @@ const Contact = () => {
               <Phone className="w-6 h-6 fill-current" />
             </div>
             <h3 className="text-lg font-bold mb-2">Telefon</h3>
-            <p className="text-slate-500 mb-2 text-sm">Notdienst rund um die Uhr</p>
-            <a href={`tel:${COMPANY.phone.replace(/\s/g, '')}`} className="text-xl font-bold text-slate-900 hover:text-brand-yellowHover">
+            <p className="text-slate-600 mb-2 text-sm">Notdienst rund um die Uhr</p>
+            <a href={`tel:${COMPANY.phone.replace(/\s/g, '')}`} className="text-base font-bold text-slate-900 hover:text-brand-yellowHover">
               {COMPANY.phoneDisplay}
             </a>
           </div>
@@ -31,8 +31,8 @@ const Contact = () => {
               <Mail className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold mb-2">E-Mail</h3>
-            <p className="text-slate-500 mb-2 text-sm">Für schriftliche Anfragen</p>
-            <a href={`mailto:${COMPANY.email}`} className="text-lg font-bold text-slate-900 hover:text-brand-yellowHover">
+            <p className="text-slate-600 mb-2 text-sm">Für schriftliche Anfragen</p>
+            <a href={`mailto:${COMPANY.email}`} className="text-base font-bold text-slate-900 hover:text-brand-yellowHover">
               {COMPANY.email}
             </a>
           </div>
@@ -42,8 +42,8 @@ const Contact = () => {
               <MapPin className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold mb-2">Standort</h3>
-            <p className="text-slate-500 mb-2 text-sm">Einsatzgebiet ganz Wien</p>
-            <span className="text-lg font-bold text-slate-900">
+            <p className="text-slate-600 mb-2 text-sm">Einsatzgebiet ganz Wien</p>
+            <span className="text-base font-bold text-slate-900">
               {COMPANY.addressFull}
             </span>
           </div>
