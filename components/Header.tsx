@@ -43,14 +43,14 @@ const Header = () => {
                 className="
                   block w-auto object-contain
                   h-full                   /* füllt die Höhe des flex-Containers */
-                  max-h-[2.75rem]          /* ~44px für h-16 (4rem minus etwas Innenluft) */
-                  md:max-h-[3.25rem]       /* ~52px für h-[4.5rem] */
-                  lg:max-h-[3.75rem]       /* ~60px für h-20 (5rem) */
+                  max-h-[60px]            /* 60px für Handy */
+                  md:max-h-[68px]         /* 68px für Tablet */
+                  lg:max-h-[76px]         /* 76px für Desktop */
                 "
               />
               
-              <div className="hidden lg:flex flex-col">
-                <span className="block text-lg font-extrabold leading-none tracking-tight">
+              <div className="flex flex-col">
+                <span className="block text-sm md:text-lg font-extrabold leading-none tracking-tight">
                   {COMPANY.name.toUpperCase()}
                 </span>
                 {/*

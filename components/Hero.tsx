@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import { Phone, Clock, MapPin, CheckCircle2, ArrowRight, Mail, AlertCircle, X } from 'lucide-react';
+import { Phone, Clock, MapPin, CheckCircle2, ArrowRight, Mail, AlertCircle, X, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { COMPANY, ROUTES } from '@/lib/config';
 
@@ -46,22 +46,30 @@ const Hero = () => {
   };
   return (
     <>
-    <section className="relative py-20 bg-slate-50 overflow-x-hidden">
-      <div className="container mx-auto px-4 relative z-10 min-h-0">
+    <section 
+      className="relative py-20 overflow-x-hidden min-h-screen flex items-center"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${COMPANY.heroImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      <div className="container mx-auto px-4 relative z-10 min-h-0 w-full">
         <div className="grid md:grid-cols-2 gap-8 items-start">
           
           {/* Text Content */}
           <div className="space-y-5 text-center md:text-left">
             <div className="inline-flex items-center bg-brand-yellow text-brand-dark px-3 py-1 rounded border border-brand-yellow shadow-sm mb-1">
-              <span className="w-1.5 h-1.5 bg-brand-dark rounded-full mr-2 animate-pulse" />
+              <Zap className="w-5 h-4 mr-2" />
               <span className="font-bold uppercase tracking-wide text-[11px]">24h Notdienst Wien</span>
             </div>
 
-            <h1 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900">
+            <h1 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-5xl font-extrabold tracking-tight leading-tight text-white">
               Wir bringen <span className="text-brand-yellow">Licht</span> ins Dunkel.
             </h1>
 
-            <p className="text-sm text-slate-900 max-w-prose mx-auto md:mx-0">
+            <p className="text-sm text-white max-w-prose mx-auto md:mx-0">
               {COMPANY.slogan}. Schnell, kompetent und zu fairen Preisen. In 20–40 Minuten bei Ihnen vor Ort.
             </p>
 
@@ -97,7 +105,7 @@ const Hero = () => {
               
             </div>
 
-            <div className="pt-6 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-slate-900 uppercase tracking-wide">
+            <div className="pt-6 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide">
               <div className="flex items-center">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-brand-yellow" />
                 24/7 Erreichbar
@@ -114,7 +122,7 @@ const Hero = () => {
               */}
             </div>
             
-            <div className="pt-2 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-slate-900 uppercase tracking-wide">
+            <div className="pt-2 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide">
               {/*Standort */}
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand-yellow shrink-0" />
@@ -161,10 +169,10 @@ const Hero = () => {
           
           {/* Anfrage-Block (Formspree + HTML5-Validation) */}
           <div className="md:justify-self-end w-full">
-            <div className="bg-brand-dark border border-slate-800 rounded-xl p-5 sm:p-6 shadow-xl max-w-md ml-auto">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 sm:p-6 shadow-2xl max-w-md ml-auto">
 
               <h3 className="text-xl font-bold text-white mb-1">Jetzt Anfrage senden oder direkt anrufen</h3>
-              <p className="text-sm text-white mb-4">
+              <p className="text-sm text-white/90 mb-4">
                 Wir melden uns schnellstmöglich bei Ihnen zurück.
               </p>
 
@@ -185,11 +193,11 @@ const Hero = () => {
                     minLength={2}
                     placeholder="Ihr Name"
                     title="Bitte Ihren Namen mit mindestens 2 Zeichen eingeben."
-                    className="w-full pl-3 pr-3 py-2.5 bg-slate-800 border border-slate-700 rounded-md text-white placeholder:text-slate-400
-                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow
+                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder:text-white/60
+                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30
                               invalid:border-rose-400 invalid:text-rose-50"
                   />
-                  <p className="mt-1 text-xs text-white">Pflichtfeld</p>
+                  <p className="mt-1 text-xs text-white/80">Pflichtfeld</p>
                 </div>
 
                 {/* E-Mail */}
@@ -202,11 +210,11 @@ const Hero = () => {
                     required
                     placeholder="Ihre E‑Mail"
                     title="Bitte eine gültige E‑Mail-Adresse eingeben (z. B. name@beispiel.at)."
-                    className="w-full pl-3 pr-3 py-2.5 bg-slate-800 border border-slate-700 rounded-md text-white placeholder:text-slate-400
-                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow
+                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder:text-white/60
+                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30
                               invalid:border-rose-400 invalid:text-rose-50"
                   />
-                  <p className="mt-1 text-xs text-white">Pflichtfeld</p>
+                  <p className="mt-1 text-xs text-white/80">Pflichtfeld</p>
                 </div>
 
                 {/* Telefon (optional, aber validiert wenn ausgefüllt) */}
@@ -220,8 +228,8 @@ const Hero = () => {
                     placeholder="Telefon (optional)"
                     pattern="^\+?[0-9 ()\/\-]{6,}$"
                     title="Bitte eine gültige Telefonnummer eingeben (Ziffern, Leerzeichen, +, /, - sind erlaubt)."
-                    className="w-full pl-3 pr-3 py-2.5 bg-slate-800 border border-slate-700 rounded-md text-white placeholder:text-slate-400
-                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow
+                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder:text-white/60
+                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30
                               invalid:border-rose-400 invalid:text-rose-50"
                   />
                 </div>
@@ -237,11 +245,11 @@ const Hero = () => {
                     minLength={10}
                     placeholder="Kurz beschreiben, wobei wir helfen können…"
                     title="Bitte Ihre Nachricht mit mindestens 10 Zeichen eingeben."
-                    className="w-full pl-3 pr-3 py-2.5 bg-slate-800 border border-slate-700 rounded-md text-white placeholder:text-slate-400
-                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow
+                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder:text-white/60
+                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30
                               invalid:border-rose-400 invalid:text-rose-50"
                   />
-                  <p className="mt-1 text-xs text-white">Pflichtfeld</p>
+                  <p className="mt-1 text-xs text-white/80">Pflichtfeld</p>
                 </div>
 
                 <button
@@ -258,7 +266,7 @@ const Hero = () => {
                 {/*<p className="text-xs text-white">Oder direkt anrufen</p>*/}
                 <a
                   href={`tel:${COMPANY.phone.replace(/\s/g, '')}`}
-                  className="inline-flex items-center gap-2 mt-1 text-brand-yellow font-semibold"
+                  className="inline-flex items-center gap-2 mt-1 text-black font-semibold"
                 >
                   {COMPANY.phoneDisplay}
                 </a>
