@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Euro, Clock, Award, ThumbsUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Euro, Clock, Award, ThumbsUp, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { COMPANY, ROUTES } from '@/lib/config';
 
 const features = [
@@ -33,6 +33,9 @@ type WhyUsProps = {
 const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
   const [currentImage, setCurrentImage] = useState<number>(0);
   const [images, setImages] = useState<string[]>(initialImages);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
     setImages(initialImages);
@@ -50,6 +53,21 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
     
   }, [images.length]);
 
+  // ESC-Taste zum Schließen des Modals
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsModalOpen(false);
+      }
+    };
+    if (isModalOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isModalOpen]);
+
   const goToPrevious = () => {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
@@ -60,6 +78,27 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
 
   const goToImage = (index: number) => {
     setCurrentImage(index);
+  };
+
+  // Touch/Swipe-Funktionalität
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    setTouchEnd(e.clientX);
+    if (touchStart !== null && e.clientX !== null) {
+      const distance = touchStart - e.clientX;
+      const isSwipeLeft = distance > 50; // Mindestens 50px nach links
+      const isSwipeRight = distance < -50; // Mindestens 50px nach rechts
+      
+      if (isSwipeLeft) {
+        goToNext();
+      } else if (isSwipeRight) {
+        goToPrevious();
+      }
+    }
+    setTouchStart(null);
   };
   const displayedSrc = images.length ? images[currentImage] : COMPANY.heroImage;
   return (
@@ -95,11 +134,11 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
             </div>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl group" style={{ height: '400px', width: '100%' }}>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer" style={{ height: '400px', width: '100%' }} onClick={() => setIsModalOpen(true)}>
              <img
                src={displayedSrc}
                alt="Elektriker bei der Arbeit"
-               className="absolute inset-0 w-full h-full object-contain object-center transition-opacity duration-500 bg-white"
+               className="absolute inset-0 w-full h-full object-contain object-center transition-opacity duration-500 bg-white hover:opacity-90 cursor-pointer"
              />
              <div className="absolute inset-0 bg-slate-900/10"></div>
 
@@ -134,6 +173,61 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/80"
+            onClick={() => setIsModalOpen(false)}
+          />
+          <div className="relative z-10 max-w-2xl w-full max-h-[85vh] flex flex-col bg-white rounded-lg p-4">
+            {/* Schließen Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-2 right-2 bg-white hover:bg-slate-200 text-slate-900 p-2 rounded-full transition z-20"
+              aria-label="Schließen"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Modal Bild */}
+            <img
+              src={displayedSrc}
+              alt="Vergrößertes Bild"
+              className="w-full h-auto max-h-[70vh] object-contain rounded-lg mt-6 cursor-grab select-none"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              draggable={false}
+            />
+
+            {/* Navigation im Modal */}
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={goToPrevious}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-slate-900 p-2 rounded-full transition z-20"
+                  aria-label="Vorheriges Bild"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={goToNext}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-slate-900 p-2 rounded-full transition z-20"
+                  aria-label="Nächstes Bild"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                {/* Bildanzahl */}
+                <div className="text-center mt-4 text-sm text-slate-900 font-semibold">
+                  {currentImage + 1} / {images.length}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 };

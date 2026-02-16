@@ -49,7 +49,7 @@ const Hero = () => {
     <section 
       className="relative py-5 overflow-x-hidden min-h-screen flex items-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.45)), url(${COMPANY.heroImage})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(${COMPANY.heroImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -76,7 +76,7 @@ const Hero = () => {
             <p className="text-base text-white max-w-prose mx-auto md:mx-0 tracking-wide font-semibold">
               Schnell, kompetent und zu fairen Preisen.
               <br />
-              In 20–40 Minuten bei Ihnen vor Ort.
+              Jederzeit für Sie da – 24/7 in Wien & Umgebung
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3 pt-4">
@@ -110,13 +110,15 @@ const Hero = () => {
               */}
               
             </div>
-
-            <div className="text-sm pt-3 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide">
+                
+            {/* <div className="text-sm pt-3 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide"> */}
+               {/*
               <div className="flex items-center">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-brand-yellow" />
                 Jederzeit für Sie da – 24/7 in Wien & Umgebung
-                {/*24/7 Erreichbar - Wien & Umgebung*/}
+                {/*24/7 Erreichbar - Wien & Umgebung
               </div>
+              */}
               {/* 
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-brand-yellow" />
@@ -129,7 +131,7 @@ const Hero = () => {
                 Meisterbetrieb
               </div>
               */}
-            </div>
+            {/*</div>*/}
             
             <div className="text-sm pt-1 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide">
               {/*Standort */}
