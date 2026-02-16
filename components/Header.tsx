@@ -43,9 +43,9 @@ const Header = () => {
                 className="
                   block w-auto object-contain
                   h-full                   /* füllt die Höhe des flex-Containers */
-                  max-h-[60px]            /* 60px für Handy */
-                  md:max-h-[68px]         /* 68px für Tablet */
-                  lg:max-h-[76px]         /* 76px für Desktop */
+                  max-h-[58px]            /* 58px für Handy */
+                  md:max-h-[66px]         /* 66px für Tablet */
+                  lg:max-h-[74px]         /* 74px für Desktop */
                 "
               />
               

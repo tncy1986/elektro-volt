@@ -47,9 +47,9 @@ const Hero = () => {
   return (
     <>
     <section 
-      className="relative py-20 overflow-x-hidden min-h-screen flex items-center"
+      className="relative py-5 overflow-x-hidden min-h-screen flex items-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${COMPANY.heroImage})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.45)), url(${COMPANY.heroImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -65,12 +65,18 @@ const Hero = () => {
               <span className="font-bold uppercase tracking-wide text-[11px]">24h Notdienst Wien</span>
             </div>
 
-            <h1 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-5xl font-extrabold tracking-tight leading-tight text-white">
-              Wir bringen <span className="text-brand-yellow">Licht</span> ins Dunkel.
-            </h1>
-
+            <h2 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-5xl font-extrabold tracking-tight leading-tight text-white">
+              Wir bringen Ihr <span className="text-brand-yellow">System zum Leuchten</span> – Elektriker in Wien
+            </h2>
+            {/*
             <p className="text-sm text-white max-w-prose mx-auto md:mx-0">
-              {COMPANY.slogan}. Schnell, kompetent und zu fairen Preisen. In 20–40 Minuten bei Ihnen vor Ort.
+              {COMPANY.slogan}.
+            </p>
+            */}
+            <p className="text-base text-white max-w-prose mx-auto md:mx-0 tracking-wide font-semibold">
+              Schnell, kompetent und zu fairen Preisen.
+              <br />
+              In 20–40 Minuten bei Ihnen vor Ort.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3 pt-4">
@@ -80,7 +86,7 @@ const Hero = () => {
                 aria-label={`Telefon anrufen ${COMPANY.phoneDisplay}`}
               >
                 {/*<Phone className="w-5 h-5 fill-current" />*/}
-                <Phone className="w-5 h-5" />
+                <Phone className="w-5 h-" />
                 {COMPANY.phoneDisplay}
               </a>
 
@@ -105,15 +111,18 @@ const Hero = () => {
               
             </div>
 
-            <div className="pt-6 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide">
+            <div className="text-sm pt-3 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide">
               <div className="flex items-center">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-brand-yellow" />
-                24/7 Erreichbar
+                Jederzeit für Sie da – 24/7 in Wien & Umgebung
+                {/*24/7 Erreichbar - Wien & Umgebung*/}
               </div>
+              {/* 
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-brand-yellow" />
                 Wien & Umgebung
               </div>
+              */}
               {/*
               <div className="flex items-center">
                 <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-brand-yellow" />
@@ -122,9 +131,9 @@ const Hero = () => {
               */}
             </div>
             
-            <div className="pt-2 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide">
+            <div className="text-sm pt-1 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-base font-bold text-white uppercase tracking-wide">
               {/*Standort */}
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-2">
                 <MapPin className="w-5 h-5 text-brand-yellow shrink-0" />
                 <span>
                   <a
@@ -169,7 +178,7 @@ const Hero = () => {
           
           {/* Anfrage-Block (Formspree + HTML5-Validation) */}
           <div className="md:justify-self-end w-full">
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 sm:p-6 shadow-2xl max-w-md ml-auto">
+            <div className="bg-black/40 backdrop-blur-md border border-white/20 rounded-xl p-5 sm:p-6 shadow-2xl max-w-[360px] ml-auto">
 
               <h3 className="text-xl font-bold text-white mb-1">Jetzt Anfrage senden oder direkt anrufen</h3>
               <p className="text-sm text-white/90 mb-4">
@@ -193,9 +202,9 @@ const Hero = () => {
                     minLength={2}
                     placeholder="Ihr Name"
                     title="Bitte Ihren Namen mit mindestens 2 Zeichen eingeben."
-                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder:text-white/60
+                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-sm text-white placeholder:text-white/60
                               focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30
-                              invalid:border-rose-400 invalid:text-rose-50"
+                              invalid:border-white invalid:text-white"
                   />
                   <p className="mt-1 text-xs text-white/80">Pflichtfeld</p>
                 </div>
@@ -210,9 +219,9 @@ const Hero = () => {
                     required
                     placeholder="Ihre E‑Mail"
                     title="Bitte eine gültige E‑Mail-Adresse eingeben (z. B. name@beispiel.at)."
-                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder:text-white/60
+                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-sm text-white placeholder:text-white/60
                               focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30
-                              invalid:border-rose-400 invalid:text-rose-50"
+                              invalid:border-white invalid:text-white"
                   />
                   <p className="mt-1 text-xs text-white/80">Pflichtfeld</p>
                 </div>
@@ -228,9 +237,9 @@ const Hero = () => {
                     placeholder="Telefon (optional)"
                     pattern="^\+?[0-9 ()\/\-]{6,}$"
                     title="Bitte eine gültige Telefonnummer eingeben (Ziffern, Leerzeichen, +, /, - sind erlaubt)."
-                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder:text-white/60
+                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-sm text-white placeholder:text-white/60
                               focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30
-                              invalid:border-rose-400 invalid:text-rose-50"
+                              invalid:border-white invalid:text-white"
                   />
                 </div>
 
@@ -245,9 +254,9 @@ const Hero = () => {
                     minLength={10}
                     placeholder="Kurz beschreiben, wobei wir helfen können…"
                     title="Bitte Ihre Nachricht mit mindestens 10 Zeichen eingeben."
-                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white placeholder:text-white/60
+                    className="w-full pl-3 pr-3 py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-sm text-white placeholder:text-white/60
                               focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30
-                              invalid:border-rose-400 invalid:text-rose-50"
+                              invalid:border-white invalid:text-white"
                   />
                   <p className="mt-1 text-xs text-white/80">Pflichtfeld</p>
                 </div>
@@ -266,7 +275,7 @@ const Hero = () => {
                 {/*<p className="text-xs text-white">Oder direkt anrufen</p>*/}
                 <a
                   href={`tel:${COMPANY.phone.replace(/\s/g, '')}`}
-                  className="inline-flex items-center gap-2 mt-1 text-black font-semibold"
+                  className="inline-flex items-center gap-2 mt-1 text-brand-yellow font-semibold"
                 >
                   {COMPANY.phoneDisplay}
                 </a>

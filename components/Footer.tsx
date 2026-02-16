@@ -23,7 +23,8 @@ const Footer = () => {
               <span className="text-base font-bold text-slate-900">{COMPANY.name}</span>
             </Link>
             <p className="text-sm leading-relaxed mb-4 text-slate-900">
-              {COMPANY.slogan}. <br />Ihr kompetenter Partner für Elektroinstallationen und Störungsdienst in Wien.
+              {/*{COMPANY.slogan}. <br />Ihr kompetenter Partner für Elektroinstallationen und Störungsdienst in Wien.*/}
+              Elektrotechnik-Experte: Von der Installation bis zur Notfallhilfe.
             </p>
             <div className="flex items-center gap-2 font-bold text-slate-900">
                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -37,7 +38,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`${ROUTES.services}#${s.slug}`} className="text-slate-900 hover:text-slate-700 transition">{s.title}</Link>
+                  <Link href={`${ROUTES.services}#${s.slug}`} className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300">{s.title}</Link>
                 </li>
               ))}
             </ul>
@@ -47,8 +48,8 @@ const Footer = () => {
           <div>
             <h4 className="text-slate-900 font-bold mb-4 uppercase text-sm tracking-wider">Rechtliches</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href={ROUTES.impressum} className="text-slate-900 hover:text-slate-700 transition">Impressum</Link></li>
-              <li><Link href={ROUTES.datenschutz} className="text-slate-900 hover:text-slate-700 transition">Datenschutz</Link></li>
+              <li><Link href={ROUTES.impressum} className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300">Impressum</Link></li>
+              <li><Link href={ROUTES.datenschutz} className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300">Datenschutz</Link></li>
             </ul>
           </div>
 
@@ -58,11 +59,11 @@ const Footer = () => {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-brand-yellow shrink-0" />
-                <a href={`tel:${COMPANY.phone.replace(/\s/g, '')}`} className="text-slate-900 hover:text-slate-700 transition">{COMPANY.phoneDisplay}</a>
+                <a href={`tel:${COMPANY.phone.replace(/\s/g, '')}`} className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300">{COMPANY.phoneDisplay}</a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-brand-yellow shrink-0" />
-                <a href={`mailto:${COMPANY.email}`} className="text-slate-900 hover:text-slate-700 transition">{COMPANY.email}</a>
+                <a href={`mailto:${COMPANY.email}`} className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300">{COMPANY.email}</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand-yellow shrink-0" />
@@ -71,7 +72,7 @@ const Footer = () => {
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(COMPANY.addressLine)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300"
                   >
                   {COMPANY.addressLine}
                   </a>
