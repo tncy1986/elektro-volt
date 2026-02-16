@@ -35,7 +35,6 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
   const [images, setImages] = useState<string[]>(initialImages);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
     setImages(initialImages);
@@ -81,14 +80,16 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
   };
 
   // Touch/Swipe-Funktionalität
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.clientX);
+  const handleTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
+    const touch = e.touches[0];
+    setTouchStart(touch ? touch.clientX : null);
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    setTouchEnd(e.clientX);
-    if (touchStart !== null && e.clientX !== null) {
-      const distance = touchStart - e.clientX;
+  const handleTouchEnd = (e: React.TouchEvent<HTMLImageElement>) => {
+    const touch = e.changedTouches[0];
+    const touchEndX = touch ? touch.clientX : null;
+    if (touchStart !== null && touchEndX !== null) {
+      const distance = touchStart - touchEndX;
       const isSwipeLeft = distance > 50; // Mindestens 50px nach links
       const isSwipeRight = distance < -50; // Mindestens 50px nach rechts
       
