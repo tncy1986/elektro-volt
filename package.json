@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:clean": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$ports = 3000,3001; foreach ($port in $ports) { $conns = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue; foreach ($conn in $conns) { Stop-Process -Id $conn.OwningProcess -Force -ErrorAction SilentlyContinue } }; if (Test-Path .next) { Remove-Item .next -Recurse -Force }; npx next dev -p 3000\"",
     "build": "next build",
+    "build:clean": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$ports = 3000,3001; foreach ($port in $ports) { $conns = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue; foreach ($conn in $conns) { Stop-Process -Id $conn.OwningProcess -Force -ErrorAction SilentlyContinue } }; if (Test-Path .next) { Remove-Item .next -Recurse -Force }; npx next build\"",
     "start": "next start",
     "lint": "next lint"
   },

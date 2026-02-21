@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Phone, Menu, X, Zap, CheckCircle2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Phone, Menu, X, Zap, CheckCircle2, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -9,9 +9,25 @@ import { COMPANY, ROUTES } from '@/lib/config';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNotdiensteOpen, setIsNotdiensteOpen] = useState(false);
   const pathname = usePathname();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  // Notdienste-Dropdown schließen, wenn die Seite navigiert
+  useEffect(() => {
+    setIsNotdiensteOpen(false);
+  }, [pathname]);
+
+  const emergencyLinks = [
+    { href: '/kurzschluss-nachts-wien', label: 'Kurzschluss nachts Wien' },
+    { href: '/fi-schalter-faellt-raus-wien', label: 'FI Schalter fällt raus Wien' },
+    { href: '/elektriker-wien', label: 'Elektriker Wien' },
+    { href: '/steckdose-reparieren-wien', label: 'Steckdose reparieren Wien' },
+    { href: '/e-befund-wien-kosten', label: 'E-Befund Wien Kosten' },
+  ];
+
+  const isEmergencyActive = emergencyLinks.some((link) => pathname === link.href);
 
   const isActive = (path: string) =>
     pathname === path
@@ -94,6 +110,38 @@ const Header = () => {
             </span>
           </div>
 
+          <div className="relative group" onMouseLeave={() => setIsNotdiensteOpen(false)}>
+            <button
+              onClick={() => setIsNotdiensteOpen(!isNotdiensteOpen)}
+              className={`${isEmergencyActive ? 'text-brand-yellow' : 'text-white hover:text-brand-yellow'} transition-colors inline-flex items-center gap-1 font-semibold text-sm uppercase tracking-wide`}
+              aria-haspopup="true"
+              aria-expanded={isNotdiensteOpen}
+            >
+              Notdienste
+              <ChevronDown className="w-4 h-4" />
+            </button>
+            <span className={`absolute left-1/2 -bottom-3 -translate-x-1/2 pointer-events-none transition-all duration-300 ease-out ${isEmergencyActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+              <svg className="w-4 h-4 text-brand-yellow transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M5.25 7.5L10 12.25 14.75 7.5 16 8.75 10 14.75 4 8.75 5.25 7.5z" />
+              </svg>
+            </span>
+
+            <div className={`absolute left-1/2 top-full -translate-x-1/2 pt-4 ${isNotdiensteOpen ? 'block' : 'hidden'}`}>
+              <div className="w-72 rounded-lg border border-slate-700 bg-slate-900/95 backdrop-blur shadow-xl p-2">
+                {emergencyLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsNotdiensteOpen(false)}
+                    className={`block px-3 py-2 rounded text-left normal-case tracking-normal ${pathname === link.href ? 'bg-slate-800 text-brand-yellow' : 'text-white hover:bg-slate-800 hover:text-brand-yellow'} transition`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="relative">
             <Link href={ROUTES.services} aria-current={pathname === ROUTES.services ? 'page' : undefined} className={`${isActive(ROUTES.services)} transition-colors`}>Leistungen</Link>
             <span className={`absolute left-1/2 -bottom-3 -translate-x-1/2 pointer-events-none transition-all duration-300 ease-out ${pathname === ROUTES.services ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
@@ -170,6 +218,21 @@ const Header = () => {
         <div className="md:hidden bg-slate-800 text-white border-t border-slate-700 absolute w-full shadow-xl">
           <nav className="flex flex-col text-center font-medium">
             <Link href={ROUTES.home} onClick={toggleMenu} className={mobileLinkClass}>Startseite</Link>
+            <div className="text-left px-4 py-3 border-b border-slate-800">
+              <p className="text-brand-yellow font-semibold uppercase text-xs tracking-wider mb-2">Notdienste</p>
+              <div className="flex flex-col">
+                {emergencyLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={toggleMenu}
+                    className={`py-2 text-sm ${pathname === link.href ? 'text-brand-yellow' : 'text-white hover:text-brand-yellow'} transition`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
             <Link href={ROUTES.services} onClick={toggleMenu} className={mobileLinkClass}>Leistungen</Link>
             <Link href={ROUTES.about} onClick={toggleMenu} className={mobileLinkClass}>Über Uns</Link>
             <Link href={ROUTES.contact} onClick={toggleMenu} className={mobileLinkClass}>Kontakt</Link>

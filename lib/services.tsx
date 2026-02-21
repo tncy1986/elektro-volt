@@ -1,4 +1,4 @@
-import { Zap, Wrench, Home, ShieldCheck, Cable, Lightbulb } from 'lucide-react';
+import { Zap, Home, ShieldCheck } from 'lucide-react';
 import React from 'react';
 
 export const services = [

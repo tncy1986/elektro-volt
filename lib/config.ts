@@ -53,3 +53,38 @@ export const ROUTES = {
   impressum: "/impressum",
   datenschutz: "/datenschutz"
 };
+
+// Typische Probleme - extrem wichtig für Google & Kunden
+export const COMMON_PROBLEMS = [
+  "Sicherung fliegt ständig raus",
+  "FI-Schalter lässt sich nicht einschalten",
+  "Teil der Wohnung ohne Strom",
+  "Steckdose funktioniert nicht mehr",
+  "Herd oder Backofen ohne Funktion",
+  "Kurzschluss nach Gerät anschließen",
+  "Stromausfall nachts",
+];
+
+export const COMMON_PROBLEMS_INTRO = "Haben Sie eines dieser Probleme?";
+export const COMMON_PROBLEMS_CTA = "In den meisten Fällen können wir das sofort vor Ort beheben.";
+
+// Transparente Kosten - nimmt Angst, bringt Anrufe
+export const PRICING = [
+  { label: "Notdienst", price: "ab 89€" },
+  { label: "Steckdose reparieren", price: "ca. 120–180€" },
+  { label: "Sicherung / FI tauschen", price: "ca. 150–280€" },
+  { label: "E-Befund", price: "ab 250€" },
+];
+
+export const PRICING_INTRO = "Transparente Kosten";
+export const PRICING_CTA = "Sie erhalten vor Arbeitsbeginn immer eine Preisinfo.";
+
+// Warum Kunden uns wählen - Vertrauen aufbauen
+export const TRUST_POINTS = [
+  "Anfahrt meist unter 45 Minuten",
+  "Saubere Arbeit ohne Schäden",
+  "Erklärung des Problems",
+  "Kartenzahlung möglich",
+];
+
+export const TRUST_INTRO = "Ihr Elektriker in Wien – schnell & ehrlich";

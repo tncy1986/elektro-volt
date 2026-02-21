@@ -49,7 +49,7 @@ const Hero = () => {
     <section 
       className="relative py-5 overflow-x-hidden min-h-screen flex items-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(${COMPANY.heroImage})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${COMPANY.heroImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -60,11 +60,13 @@ const Hero = () => {
           
           {/* Text Content */}
           <div className="space-y-5 text-center md:text-left">
+            {/*
             <div className="inline-flex items-center bg-brand-yellow text-brand-dark px-3 py-1 rounded border border-brand-yellow shadow-sm mb-1">
               <Zap className="w-5 h-4 mr-2" />
               <span className="font-bold uppercase tracking-wide text-[11px]">24h Notdienst Wien</span>
             </div>
-
+            */}
+            
             <h2 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-5xl font-extrabold tracking-tight leading-tight text-white">
               Wir bringen Ihr <span className="text-brand-yellow">System zum Leuchten</span> – Elektriker in Wien
             </h2>
@@ -78,6 +80,34 @@ const Hero = () => {
               <br />
               Jederzeit für Sie da – 24/7 in Wien & Umgebung
             </p>
+
+            <div className="max-w-3xl mx-auto md:mx-0 pt-1 space-y-4">
+              <p className="text-white/95 text-[0.8rem] md:text-[0.95rem] font-medium leading-tight">
+                Stromausfall, FI-Schalter fällt raus, Kurzschluss oder Herd defekt?
+              </p>
+              <p className="text-[0.9rem] md:text-[1.15rem] leading-tight">
+                <span className="text-white font-extrabold">24h Notdienst</span>
+                <span className="text-white/90 italic font-semibold"> – auch nachts, Wochenende &amp; Feiertag.</span>
+              </p>
+              
+              {/* Info-Punkte */}
+              <div className="flex flex-col gap-2 pt-2">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-brand-yellow flex-shrink-0" />
+                  <span className="text-white text-[0.85rem] md:text-[0.95rem] font-semibold">Keine versteckten Kosten</span>
+                </div>
+                 {/*
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-brand-yellow flex-shrink-0" />
+                  <span className="text-white text-[0.85rem] md:text-[0.95rem] font-semibold">Meisterbetrieb aus Wien</span>
+                </div>
+                */}
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-brand-yellow flex-shrink-0" />
+                  <span className="text-white text-[0.85rem] md:text-[0.95rem] font-semibold">Schnelle Anfahrt</span>
+                </div>
+              </div>
+            </div>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3 pt-4">
               <a
@@ -184,7 +214,7 @@ const Hero = () => {
 
               <h3 className="text-xl font-bold text-white mb-1">Jetzt Anfrage senden oder direkt anrufen</h3>
               <p className="text-sm text-white/90 mb-4">
-                Wir melden uns schnellstmöglich bei Ihnen zurück.
+                In 30-45 Minuten bei Ihnen – rufen Sie jetzt an.
               </p>
 
               <form className="space-y-3" noValidate onSubmit={handleSubmit}>

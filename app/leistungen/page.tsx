@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Services from '@/components/Services';
 import { Phone } from 'lucide-react';
 import { COMPANY } from '@/lib/config';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Unsere Leistungen - Elektroinstallation, Notdienst & E-Befund Wien',
@@ -26,6 +27,37 @@ export default function ServicesPage() {
       */}    
 
       <Services />
+
+      <div className="container mx-auto px-4 pb-10">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-3">Häufige Elektro-Probleme in Wien</h2>
+          <p className="text-slate-700 mb-6">
+            Auf diesen Seiten finden Sie konkrete Hilfe zu häufig gesuchten Themen in Wien:
+          </p>
+          <div className="grid md:grid-cols-2 gap-3">
+            <Link href="/elektriker-wien" className="border border-slate-200 rounded-lg p-4 hover:bg-slate-50 transition">
+              <h3 className="font-bold text-slate-900 mb-1">Elektriker Wien</h3>
+              <p className="text-sm text-slate-700">Schnelle Hilfe in Wien bei Störungen und Reparaturen.</p>
+            </Link>
+            <Link href="/fi-schalter-faellt-raus-wien" className="border border-slate-200 rounded-lg p-4 hover:bg-slate-50 transition">
+              <h3 className="font-bold text-slate-900 mb-1">FI Schalter fällt raus Wien</h3>
+              <p className="text-sm text-slate-700">Ursachen, Fehlersuche und sichere Behebung durch Elektriker.</p>
+            </Link>
+            <Link href="/steckdose-reparieren-wien" className="border border-slate-200 rounded-lg p-4 hover:bg-slate-50 transition">
+              <h3 className="font-bold text-slate-900 mb-1">Steckdose reparieren Wien</h3>
+              <p className="text-sm text-slate-700">Defekte Steckdosen fachgerecht prüfen, reparieren oder tauschen.</p>
+            </Link>
+            <Link href="/kurzschluss-nachts-wien" className="border border-slate-200 rounded-lg p-4 hover:bg-slate-50 transition">
+              <h3 className="font-bold text-slate-900 mb-1">Kurzschluss nachts Wien</h3>
+              <p className="text-sm text-slate-700">24h Notdienst bei akutem Stromausfall und Kurzschluss.</p>
+            </Link>
+            <Link href="/e-befund-wien-kosten" className="border border-slate-200 rounded-lg p-4 hover:bg-slate-50 transition md:col-span-2">
+              <h3 className="font-bold text-slate-900 mb-1">E-Befund Wien Kosten</h3>
+              <p className="text-sm text-slate-700">Transparente Infos zu Ablauf, Umfang und Preisfaktoren.</p>
+            </Link>
+          </div>
+        </div>
+      </div>
 
       {/* Additional Service Details Block */}
       <div className="container mx-auto px-2 mb-10">

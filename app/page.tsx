@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import WhyUs from '@/components/WhyUs';
-import Contact from '@/components/Contact';
+import ProblemsAndSolution from '@/components/ProblemsAndSolution';
 import { readdir } from 'fs/promises';
 import { extname, join } from 'path';
 
@@ -35,6 +35,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <ProblemsAndSolution />
       <Services />
       <WhyUs initialImages={images} />
       {/*<Contact />*/}
