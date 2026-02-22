@@ -94,7 +94,7 @@ const Services = ({ showLearnMore = false, mode = 'carousel' }: { showLearnMore?
               <div
                 key={index}
                 id={service.slug}
-                ref={el => (blockRefs.current[service.slug] = el)}
+                ref={el => { blockRefs.current[service.slug] = el; }}
                 className={`bg-white p-6 rounded-xl shadow-sm hover:shadow-md border border-slate-100 group flex flex-col transition-all duration-300 ${highlighted === service.slug ? 'ring-4 ring-brand-yellow/70 border-brand-yellow bg-yellow-50' : ''}`}
               >
                 <div className="flex items-center mb-4">
