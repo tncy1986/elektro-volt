@@ -26,8 +26,30 @@ export default function ServicesPage() {
       </div>      
       */}    
 
-      <Services />
+      <div id="services">
+        <Services mode="list" showLearnMore={false} /> 
+      </div>
 
+      {/*
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-10 max-w-4xl mx-auto mb-10 mt-8 shadow-sm">
+        <h1 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 text-center">Unsere Leistungen im Überblick</h1>
+        <p className="text-slate-700 text-center mb-6 text-base md:text-lg">
+          Als Meisterbetrieb für Elektrotechnik bieten wir Ihnen ein breites Spektrum an Leistungen – von klassischen Elektroinstallationen über moderne Smart-Home-Lösungen bis hin zum 24h-Notdienst. Wir stehen für Qualität, Zuverlässigkeit und transparente Preise.
+        </p>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700 text-sm mb-4">
+          <li>✔️ Fachgerechte Beratung & Planung</li>
+          <li>✔️ Schnelle Hilfe bei Störungen & Notfällen</li>
+          <li>✔️ Transparente Preisgestaltung</li>
+          <li>✔️ Ausgebildete, freundliche Elektriker</li>
+          <li>✔️ E-Befund & Sicherheitsprüfungen</li>
+          <li>✔️ Innovative Lösungen für Privat & Gewerbe</li>
+        </ul>
+        <p className="text-slate-600 text-center text-sm">
+          Sie haben Fragen zu einer bestimmten Leistung? Sprechen Sie uns an – wir beraten Sie gerne persönlich!
+        </p>
+      </div>
+
+      
       <div className="container mx-auto px-4 pb-10">
         <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
           <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-3">Häufige Elektro-Probleme in Wien</h2>
@@ -58,6 +80,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
+      */}
 
       {/* Additional Service Details Block */}
       <div className="container mx-auto px-2 mb-10">

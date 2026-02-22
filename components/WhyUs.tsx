@@ -103,7 +103,7 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
   };
   const displayedSrc = images.length ? images[currentImage] : COMPANY.heroImage;
   return (
-    <section id="about" className="py-12 bg-slate-50">
+    <section id="about" className="py-12 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Warum {COMPANY.nameWithoutKG}?</h2>
@@ -118,7 +118,7 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
           <div>
             <div className="grid sm:grid-cols-2 gap-6">
               {features.map((feature, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md border border-slate-100 group flex flex-col transform transition-opacity transition-transform duration-500 opacity-100 translate-y-0">
+                <div key={idx} className="bg-white p-6 rounded-xl shadow-[0_4px_14px_rgba(15,23,42,0.06)] hover:shadow-[0_8px_20px_rgba(15,23,42,0.10)] border border-slate-100 group flex flex-col transform transition-opacity transition-transform duration-500 opacity-100 translate-y-0">
                   <div className="flex items-center mb-4">
                     <div className="bg-yellow-50 w-12 h-12 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform text-brand-yellow">
                       {feature.icon}
@@ -135,13 +135,13 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
             </div>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer" style={{ height: '400px', width: '100%' }} onClick={() => setIsModalOpen(true)}>
+           <div className="relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.18)] group cursor-pointer" style={{ height: '400px', width: '100%' }} onClick={() => setIsModalOpen(true)}>
              <img
                src={displayedSrc}
                alt="Elektriker bei der Arbeit"
                className="absolute inset-0 w-full h-full object-contain object-center transition-opacity duration-500 bg-white hover:opacity-90 cursor-pointer"
              />
-             <div className="absolute inset-0 bg-slate-900/10"></div>
+             <div className="absolute inset-0 bg-slate-900/5"></div>
 
              {/* Navigation Pfeile */}
              <button

@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links 
           <div>
             <h4 className="text-slate-900 font-bold mb-4 uppercase text-sm tracking-wider">Leistungen</h4>
             <ul className="space-y-2 text-sm">
@@ -43,14 +43,39 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-
+          */}
           {/* Legal */}
           <div>
             <h4 className="text-slate-900 font-bold mb-4 uppercase text-sm tracking-wider">Rechtliches</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href={ROUTES.impressum} className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300">Impressum</Link></li>
               <li><Link href={ROUTES.datenschutz} className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300">Datenschutz</Link></li>
+              <li><Link href={ROUTES.faq} className="text-slate-900 hover:text-brand-yellow hover:font-semibold transition-colors duration-300">FAQ</Link></li>
             </ul>
+          </div>
+
+          {/* Öffnungszeiten & Notdienst */}
+          <div>
+            <h4 className="text-slate-900 font-bold mb-4 uppercase text-sm tracking-wider flex items-center gap-2">
+              <span className="text-red-500"><svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              Öffnungszeiten
+            </h4>
+            <div className="mb-2 text-sm">
+              <span>Montag - Freitag: </span>
+              <span className="ml-1">08:00 - 17:00</span>
+            </div>
+            <div className="mb-4 text-sm">
+              <span>Samstag - Sonntag: </span>
+              <span className="ml-1">geschlossen</span>
+            </div>
+            <h4 className="text-slate-900 font-bold mb-4 uppercase text-sm tracking-wider flex items-center gap-2">
+              <span className="text-red-500"><svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              Notdienst
+            </h4>
+            <div className="mb-2 text-sm">
+              <span>Montag - Sonntag: </span>
+              <span className="ml-1">00:00 - 24:00</span>
+            </div>
           </div>
 
           {/* Contact */}

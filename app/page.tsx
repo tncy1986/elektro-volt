@@ -36,7 +36,7 @@ export default async function HomePage() {
     <>
       <Hero />
       <ProblemsAndSolution />
-      <Services />
+      <Services showLearnMore={true} />
       <WhyUs initialImages={images} />
       {/*<Contact />*/}
     </>

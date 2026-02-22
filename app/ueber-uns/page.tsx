@@ -40,10 +40,25 @@ export default function AboutPage() {
                         Egal ob es sich um einen Notfall mitten in der Nacht oder um eine geplante Sanierung handelt:
                         Wir behandeln jeden Auftrag mit der gleichen Sorgfalt und Professionalität.
                     </p>
+                    <p>
+                        <b>Unser Team:</b> Besteht aus erfahrenen Elektrikern, die regelmäßig geschult werden und mit Leidenschaft für Sie im Einsatz sind.
+                    </p>
+                    <p>
+                        <b>Unsere Werte:</b> Ehrlichkeit, Zuverlässigkeit, Transparenz und Respekt im Umgang mit Kunden und Kollegen.
+                    </p>
+                    <p>
+                        <b>Notdienst & Öffnungszeiten:</b> Wir sind 24/7 für Sie erreichbar – auch nachts und an Wochenenden. Unsere regulären Öffnungszeiten sind Montag bis Freitag 08:00–17:00 Uhr.
+                    </p>
+                    <p>
+                        <b>Zertifikate & Mitgliedschaften:</b> Meisterbetrieb, WKO-Mitglied, geprüfte Sicherheit nach E-Befund.
+                    </p>
+                    <p>
+                        <b>Kundenorientierung:</b> Wir beraten Sie persönlich, bieten transparente Preise und sorgen für eine saubere, termingerechte Ausführung.
+                    </p>
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-4">
-                    {['Meisterbetrieb', 'Wiener Traditionsbetrieb', '24h Erreichbarkeit', 'Top geschulte Mitarbeiter'].map(item => (
+                    {['Meisterbetrieb', 'Wiener Traditionsbetrieb', '24h Erreichbarkeit', 'Top geschulte Mitarbeiter', 'Transparente Preise', 'E-Befund & Sicherheit', 'WKO-Mitglied', 'Kundenorientiert'].map(item => (
                         <div key={item} className="flex items-center text-brand-dark font-semibold">
                             <CheckCircle2 className="text-brand-yellow mr-2 w-5 h-5" />
                             {item}
@@ -55,7 +70,7 @@ export default function AboutPage() {
                 <img 
                     src={COMPANY.firmenlogo3DUrl} 
                     alt="Team bei der Arbeit" 
-                    className="w-full max-w-md md:max-w-lg h-auto object-contain opacity-80" 
+                    className="w-full max-w-md md:max-w-lg h-auto object-contain opacity-80 mt-[-200px] md:mt-[-300px]" 
                 />
             </div>
         </div>

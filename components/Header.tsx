@@ -10,13 +10,23 @@ import { COMPANY, ROUTES } from '@/lib/config';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNotdiensteOpen, setIsNotdiensteOpen] = useState(false);
+  const [isMobileNotdiensteOpen, setIsMobileNotdiensteOpen] = useState(false);
   const pathname = usePathname();
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => {
+      const next = !prev;
+      if (!next) {
+        setIsMobileNotdiensteOpen(false);
+      }
+      return next;
+    });
+  };
 
   // Notdienste-Dropdown schließen, wenn die Seite navigiert
   useEffect(() => {
     setIsNotdiensteOpen(false);
+    setIsMobileNotdiensteOpen(false);
   }, [pathname]);
 
   const emergencyLinks = [
@@ -215,23 +225,34 @@ const Header = () => {
 
       {/* Mobile Nav */}
       {isMenuOpen && (
-        <div className="md:hidden bg-slate-800 text-white border-t border-slate-700 absolute w-full shadow-xl">
+        <div className="md:hidden bg-slate-800 text-white border-t border-slate-700 absolute w-full shadow-xl max-h-[calc(100vh-4rem)] overflow-y-auto">
           <nav className="flex flex-col text-center font-medium">
             <Link href={ROUTES.home} onClick={toggleMenu} className={mobileLinkClass}>Startseite</Link>
-            <div className="text-left px-4 py-3 border-b border-slate-800">
-              <p className="text-brand-yellow font-semibold uppercase text-xs tracking-wider mb-2">Notdienste</p>
-              <div className="flex flex-col">
-                {emergencyLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={toggleMenu}
-                    className={`py-2 text-sm ${pathname === link.href ? 'text-brand-yellow' : 'text-white hover:text-brand-yellow'} transition`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+            <div className="text-center px-4 py-3 border-b border-slate-800">
+              <button
+                type="button"
+                onClick={() => setIsMobileNotdiensteOpen((prev) => !prev)}
+                className="w-full flex items-center justify-center gap-2 text-brand-yellow font-semibold uppercase text-xs tracking-wider"
+                aria-expanded={isMobileNotdiensteOpen}
+                aria-controls="mobile-notdienste"
+              >
+                Notdienste
+                <ChevronDown className={`w-4 h-4 transition-transform ${isMobileNotdiensteOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileNotdiensteOpen && (
+                <div id="mobile-notdienste" className="flex flex-col items-center mt-3">
+                  {emergencyLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={toggleMenu}
+                      className={`py-2 text-sm ${pathname === link.href ? 'text-brand-yellow' : 'text-white hover:text-brand-yellow'} transition`}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
             <Link href={ROUTES.services} onClick={toggleMenu} className={mobileLinkClass}>Leistungen</Link>
             <Link href={ROUTES.about} onClick={toggleMenu} className={mobileLinkClass}>Über Uns</Link>

@@ -1,4 +1,7 @@
-import { CheckCircle2 } from 'lucide-react';
+"use client";
+
+import { useMemo, useState } from 'react';
+import { CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { 
   COMMON_PROBLEMS, 
@@ -7,10 +10,54 @@ import {
   TRUST_INTRO, 
   COMMON_PROBLEMS_CTA,
   COMPANY,
-  GOOGLE_REVIEWS
+  GOOGLE_REVIEWS,
+  GOOGLE_REVIEW_QUOTES,
+  GOOGLE_REVIEW_TRUST_POINTS,
+  GOOGLE_REVIEW_QUOTES_HEADING,
+  GOOGLE_REVIEW_CARD_HEADING
 } from '@/lib/config';
 
 const ProblemsAndSolution = () => {
+  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const visibleQuotes = useMemo(() => {
+    if (GOOGLE_REVIEW_QUOTES.length === 0) return [] as string[];
+    const first = GOOGLE_REVIEW_QUOTES[quoteIndex % GOOGLE_REVIEW_QUOTES.length];
+    const second = GOOGLE_REVIEW_QUOTES[(quoteIndex + 1) % GOOGLE_REVIEW_QUOTES.length];
+    return [first, second].filter(Boolean);
+  }, [quoteIndex]);
+
+  const showPrevQuotes = () => {
+    if (GOOGLE_REVIEW_QUOTES.length === 0) return;
+    setQuoteIndex((prev) => (prev - 2 + GOOGLE_REVIEW_QUOTES.length) % GOOGLE_REVIEW_QUOTES.length);
+  };
+
+  const showNextQuotes = () => {
+    if (GOOGLE_REVIEW_QUOTES.length === 0) return;
+    setQuoteIndex((prev) => (prev + 2) % GOOGLE_REVIEW_QUOTES.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touch = e.touches[0];
+    setTouchStartX(touch ? touch.clientX : null);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touch = e.changedTouches[0];
+    const touchEndX = touch ? touch.clientX : null;
+    if (touchStartX !== null && touchEndX !== null) {
+      const distance = touchStartX - touchEndX;
+      const isSwipeLeft = distance > 40;
+      const isSwipeRight = distance < -40;
+      if (isSwipeLeft) {
+        showNextQuotes();
+      } else if (isSwipeRight) {
+        showPrevQuotes();
+      }
+    }
+    setTouchStartX(null);
+  };
+
   const content = (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
 
@@ -52,7 +99,7 @@ const ProblemsAndSolution = () => {
 
           <div className="bg-white border border-slate-300 rounded-xl p-6 md:p-8 h-full">
             <h3 className="text-xl md:text-2xl font-extrabold text-brand-dark mb-6">
-              ⭐ Google Bewertungen
+              {GOOGLE_REVIEW_CARD_HEADING}
             </h3>
 
             {GOOGLE_REVIEWS.screenshotUrl ? (
@@ -77,29 +124,50 @@ const ProblemsAndSolution = () => {
             </p>
 
             <div className="space-y-3">
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-brand-yellow flex-shrink-0 mt-1" />
-                <span className="text-xs md:text-sm font-semibold text-slate-600">10+ Jahre Erfahrung</span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-brand-yellow flex-shrink-0 mt-1" />
-                <span className="text-xs md:text-sm font-semibold text-slate-600">Geprüfter Elektriker – WKO</span>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-brand-yellow flex-shrink-0 mt-1" />
-                <span className="text-xs md:text-sm font-semibold text-slate-600">Über 50+ Kunden jährlich</span>
-              </div>
+              {GOOGLE_REVIEW_TRUST_POINTS.map((point) => (
+                <div key={point} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand-yellow flex-shrink-0 mt-1" />
+                  <span className="text-xs md:text-sm font-semibold text-slate-600">{point}</span>
+                </div>
+              ))}
             </div>
 
-            <div className="mt-5 pt-5 border-t border-slate-200 space-y-2.5">
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                <p className="text-xs md:text-sm font-semibold text-slate-600">„Nachts um 23 Uhr gekommen – Problem sofort gelöst!“</p>
-              </div>
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                <p className="text-xs md:text-sm font-semibold text-slate-600">„Sehr fairer Preis!“</p>
-              </div>
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                <p className="text-xs md:text-sm font-semibold text-slate-600">„Endlich ein ehrlicher Elektriker“</p>
+            <div className="mt-5 pt-5 border-t border-slate-200">
+              <p className="text-xs md:text-sm font-semibold text-slate-600 mb-3">
+                {GOOGLE_REVIEW_QUOTES_HEADING}
+              </p>
+              <div
+                className="relative pb-6"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
+                <div className="space-y-2.5">
+                  {visibleQuotes.map((quote) => (
+                    <div key={quote} className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                      <p className="text-xs md:text-sm font-semibold text-slate-600">{quote}</p>
+                    </div>
+                  ))}
+                </div>
+                {GOOGLE_REVIEW_QUOTES.length > 2 && (
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={showPrevQuotes}
+                      className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-slate-800/90 hover:bg-slate-900 text-white shadow-sm transition"
+                      aria-label="Vorherige Kundenstimmen"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={showNextQuotes}
+                      className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-slate-800/90 hover:bg-slate-900 text-white shadow-sm transition"
+                      aria-label="Nächste Kundenstimmen"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

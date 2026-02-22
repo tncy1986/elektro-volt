@@ -51,7 +51,8 @@ export const ROUTES = {
   about: "/ueber-uns",
   contact: "/kontakt",
   impressum: "/impressum",
-  datenschutz: "/datenschutz"
+  datenschutz: "/datenschutz",
+  faq: "/faq"
 };
 
 // Typische Probleme - extrem wichtig für Google & Kunden
@@ -81,10 +82,15 @@ export const PRICING_CTA = "Sie erhalten vor Arbeitsbeginn immer eine Preisinfo.
 
 // Warum Kunden uns wählen - Vertrauen aufbauen
 export const TRUST_POINTS = [
+  "24/7 Notdienst erreichbar",
   "Anfahrt meist unter 45 Minuten",
+  "Transparente Preise vorab",
+  "Meisterbetrieb aus Wien",
   "Saubere Arbeit ohne Schäden",
   "Erklärung des Problems",
-  "Kartenzahlung möglich",
+  "Fachgerechte Beratung vor Ort",
+  "Sauberkeit und Schutz der Wohnung",
+  "Schnelle Terminvergabe"
 ];
 
 export const TRUST_INTRO = "Ihr Elektriker in Wien – schnell & ehrlich";
@@ -94,7 +100,35 @@ export const GOOGLE_REVIEWS = {
     process.env.NEXT_PUBLIC_GOOGLE_REVIEW_LINK ||
     "https://search.google.com/local/writereview?placeid=DEINE_PLACE_ID",
   screenshotUrl:
-    process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_SCREENSHOT || "",
-  rating: process.env.NEXT_PUBLIC_GOOGLE_RATING || "5,0",
-  totalReviews: process.env.NEXT_PUBLIC_GOOGLE_TOTAL_REVIEWS || "50+",
+    process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_SCREENSHOT || "", rating: "4,9",
+  totalReviews: process.env.NEXT_PUBLIC_GOOGLE_TOTAL_REVIEWS || "40+",
 };
+
+export const GOOGLE_REVIEW_QUOTES = [
+  "Nachts um 23 Uhr gekommen – Problem sofort gelöst!",
+  "Defekt schnell gefunden und direkt vor Ort behoben.",
+  "Kompetent, fair, pünktlich und sympathisch! Als am nächsten Tag dann doch was nicht richtig funktionierte, waren die Burschen binnen weniger Stunden zur Stelle und brachten alles in Ordnung – ohne Extrakosten. Stromsachen nur noch mit ElektroVolt!",
+  "Schnell einen Termin für Saunaanschluss bekommen (am nächsten Tag). Freundlicher Service, hat alles super erledigt und sogar noch ein paar Extraarbeiten gemacht.",
+  "Professioneller Service sofort gekommen und das Problem sofort behoben. Preis klasse völlig in Ordnung.",
+  "Pünktlich da, sauber gearbeitet und alles verständlich erklärt. Sehr fairer Preis!",
+  "Top Notdienst – auch am Wochenende sofort erreichbar.",  
+  "Sehr freundlich, professionell und ohne Überraschungen beim Preis.",
+  "Sehr gute Elektriker sehr zuverlässig top Eklektiker danke Elektro Volt das sie so schnell die Störungen übernommen haben",
+  "Kurz angerufen, schnell da – genau so wünscht man es sich.",
+  "Sicherungskasten geprüft und alles sauber dokumentiert.",
+  "Klare Empfehlung – verlässlich, schnell, sauber.",
+  "Auch kleine Arbeiten wurden ernst genommen und perfekt erledigt.",
+  "Sehr guter Elektriker! Preis und Arbeitsleistung sind top. Ich bin sehr zufrieden und kann ihn nur weiterempfehlen",
+  "Hatte einen Stromausfall. Nachdem der Strom wieder an war, haben auf einmal Herd, paar Steckdosen und die Wärmepumpe nicht mehr funktioniert. Herr Akar war um 18 uhr bei mir und hat Top Arbeit geleistet zu einem fairen Preis! Alles funktioniert wieder! Kann ich nur empfehlen! Danke!",
+  "Ein erstklassiger Fachmann. Wir hatten abends einen Stromausfall durch eine unglückliche Überlastung unserer Sicherungen - haben nicht aufgepasst und Geschirrspüler, Waschmaschine, Quooker und ausnahmsweise e-Auto geladen. Er hat die Sicherungen ersetzt, alles durchgemessen, den Hochlauf aller Geräte überwacht und uns die Tipps gegeben, wie wir das besser machen können. Nach Prüfung aller Lasten sind wir beruhigt und klüger geworden. Eine Empfehlung.",
+];
+
+export const GOOGLE_REVIEW_TRUST_POINTS = [
+  "Geprüfter Elektriker – WKO",
+  "10+ Jahre Erfahrung",
+  "Über 50+ Kunden jährlich",
+];
+
+export const GOOGLE_REVIEW_QUOTES_HEADING = "Weitere Kundenstimmen:";
+
+export const GOOGLE_REVIEW_CARD_HEADING = "⭐ Google Bewertungen";
