@@ -88,3 +88,13 @@ export const TRUST_POINTS = [
 ];
 
 export const TRUST_INTRO = "Ihr Elektriker in Wien – schnell & ehrlich";
+
+export const GOOGLE_REVIEWS = {
+  reviewLink:
+    process.env.NEXT_PUBLIC_GOOGLE_REVIEW_LINK ||
+    "https://search.google.com/local/writereview?placeid=DEINE_PLACE_ID",
+  screenshotUrl:
+    process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_SCREENSHOT || "",
+  rating: process.env.NEXT_PUBLIC_GOOGLE_RATING || "5,0",
+  totalReviews: process.env.NEXT_PUBLIC_GOOGLE_TOTAL_REVIEWS || "50+",
+};
