@@ -95,17 +95,17 @@ const Services = ({ showLearnMore = false, mode = 'carousel' }: { showLearnMore?
                 key={index}
                 id={service.slug}
                 ref={el => { blockRefs.current[service.slug] = el; }}
-                className={`bg-white p-6 rounded-xl shadow-sm hover:shadow-md border border-slate-100 group flex flex-col transition-all duration-300 ${highlighted === service.slug ? 'ring-4 ring-brand-yellow/70 border-brand-yellow bg-yellow-50' : ''}`}
+                className={`bg-white p-6 rounded-xl shadow-[0_4px_14px_rgba(15,23,42,0.06)] hover:shadow-[0_8px_20px_rgba(251,191,36,0.15)] border border-slate-100 group flex flex-col transform transition-all duration-300 opacity-100 translate-y-0 hover:scale-105 hover:bg-yellow-50 ${highlighted === service.slug ? 'ring-4 ring-brand-yellow/70 border-brand-yellow bg-yellow-50' : ''}`}
               >
                 <div className="flex items-center mb-4">
-                  <div className="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="bg-blue-50 w-14 h-14 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform shadow-md">
                     {service.icon}
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-yellow transition-colors">
                     {service.title}
                   </h3>
                 </div>
-                <p className="text-sm text-slate-900 leading-relaxed mb-4 flex-grow">
+                <p className="text-base text-slate-900 leading-relaxed mb-4 flex-grow">
                   {service.description}
                 </p>
               </div>
