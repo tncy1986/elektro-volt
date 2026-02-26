@@ -3,7 +3,8 @@ import { COMPANY } from '@/lib/config';
 export default function ImprintPage() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-3xl">
-      <h1 className="text-3xl font-bold mb-8 border-b pb-4">Impressum</h1>
+      <h2 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-5xl font-extrabold tracking-tight leading-tight text-center text-brand-dark mb-4">Impressum</h2>
+      <div className="mx-auto mb-8 h-1 w-40 bg-brand-yellow rounded" />
       <div className="space-y-6 text-slate-700">
         <div>
           <h2 className="text-xl font-bold text-brand-dark mb-2">Vollständiger Firmenname</h2>

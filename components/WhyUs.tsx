@@ -5,24 +5,24 @@ import { COMPANY, ROUTES } from '@/lib/config';
 
 const features = [
   {
-    icon: <Euro className="w-8 h-8" />,
-    title: "Transparente Preise",
-    text: "Keine versteckten Kosten. Wir kommunizieren Preise fair und offen vor Arbeitsbeginn."
+    icon: <Euro className="w-10 h-10" />,
+    title: "Faire & transparente Preise",
+    text: "Sie wissen immer, was Sie zahlen – garantiert keine versteckten Kosten."
   },
   {
-    icon: <Clock className="w-8 h-8" />,
-    title: "Schnelle Anfahrt",
-    text: "Dank unserer zentralen Lage sind wir in Wien meist innerhalb von 30-45 Minuten bei Ihnen."
+    icon: <Clock className="w-10 h-10" />,
+    title: "Schnell vor Ort",
+    text: "Meist in 30-45 Minuten bei Ihnen in Wien – auch nachts & am Wochenende."
   },
   {
-    icon: <Award className="w-8 h-8" />,
-    title: "Zertifizierter Betrieb",
-    text: "Als konzessionierter Meisterbetrieb garantieren wir höchste Qualität und Sicherheit."
+    icon: <Award className="w-10 h-10" />,
+    title: "Meisterbetrieb",
+    text: "Geprüfte Qualität & Sicherheit durch konzessionierten Elektromeister."
   },
   {
-    icon: <ThumbsUp className="w-8 h-8" />,
-    title: "Kundenzufriedenheit",
-    text: "Hunderte zufriedene Kunden in Wien vertrauen auf unseren Service und unsere Kompetenz."
+    icon: <ThumbsUp className="w-10 h-10" />,
+    title: "Top bewertet in Wien",
+    text: "Hunderte zufriedene Kunden vertrauen auf unseren Service."
   }
 ];
 
@@ -118,16 +118,19 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
           <div>
             <div className="grid sm:grid-cols-2 gap-6">
               {features.map((feature, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-xl shadow-[0_4px_14px_rgba(15,23,42,0.06)] hover:shadow-[0_8px_20px_rgba(15,23,42,0.10)] border border-slate-100 group flex flex-col transform transition-opacity transition-transform duration-500 opacity-100 translate-y-0">
+                <div
+                  key={idx}
+                  className="bg-white p-6 rounded-xl shadow-[0_4px_14px_rgba(15,23,42,0.06)] hover:shadow-[0_8px_20px_rgba(251,191,36,0.15)] border border-slate-100 group flex flex-col transform transition-all duration-300 opacity-100 translate-y-0 hover:scale-105 hover:bg-yellow-50"
+                >
                   <div className="flex items-center mb-4">
-                    <div className="bg-yellow-50 w-12 h-12 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform text-brand-yellow">
+                    <div className="bg-yellow-50 w-14 h-14 rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform text-brand-yellow shadow-md">
                       {feature.icon}
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-yellow transition-colors">
                       {feature.title}
                     </h3>
                   </div>
-                  <p className="text-slate-900 text-sm leading-relaxed">
+                  <p className="text-slate-900 text-base leading-relaxed">
                     {feature.text}
                   </p>
                 </div>

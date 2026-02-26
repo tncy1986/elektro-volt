@@ -54,9 +54,8 @@ export default function EBefundKostenPage() {
   return (
     <section className="container mx-auto px-4 py-12 max-w-4xl">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <h1 className="text-3xl md:text-4xl font-extrabold text-brand-dark mb-5">
-        E-Befund & Elektroprüfung – Kosten transparent erklärt
-      </h1>
+      <h1 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-4xl font-extrabold tracking-tight leading-tight text-center text-brand-dark mb-4"> E-Befund & Elektroprüfung – Kosten transparent erklärt</h1>
+      <div className="mx-auto mb-8 h-1 w-80 bg-brand-yellow rounded" />   
       <p className="text-slate-700 mb-4 leading-relaxed">
         Ein E-Befund (auch Elektrobefund oder Elektroprüfung) ist eine systematische Überprüfung Ihrer elektrischen Anlage nach österreichischen Normen. Die Kosten richten sich nach Objektgröße, Anzahl der Stromkreise und Zustand der vorhandenen Installation – nicht nach Pauschalpreisen.
       </p>

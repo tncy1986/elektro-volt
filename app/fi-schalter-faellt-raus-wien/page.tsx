@@ -54,9 +54,8 @@ export default function FiSchalterPage() {
   return (
     <section className="container mx-auto px-4 py-12 max-w-4xl">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <h1 className="text-3xl md:text-4xl font-extrabold text-brand-dark mb-5">
-        FI-Schalter fällt raus – Ursachensuche & Behebung
-      </h1>
+      <h1 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-4xl font-extrabold tracking-tight leading-tight text-center text-brand-dark mb-4">FI-Schalter fällt raus Ursachensuche & Behebung</h1>
+      <div className="mx-auto mb-8 h-1 w-80 bg-brand-yellow rounded" />     
       <p className="text-slate-700 mb-4 leading-relaxed">
         Wenn der FI-Schalter (Fehlerstromschutzschalter) immer wieder auslöst, liegt meist ein Isolationsfehler, ein defektes Gerät oder Feuchtigkeit in einem Stromkreis vor. Das ist ein Zeichen, dass die Schutzanlage funktioniert – aber die Ursache muss gefunden werden.
       </p>

@@ -54,9 +54,8 @@ export default function KurzschlussNotdienPage() {
   return (
     <section className="container mx-auto px-4 py-12 max-w-4xl">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <h1 className="text-3xl md:text-4xl font-extrabold text-brand-dark mb-5">
-        Kurzschluss nachts? Notdienst sofort vor Ort
-      </h1>
+      <h1 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-4xl font-extrabold tracking-tight leading-tight text-center text-brand-dark mb-4">Kurzschluss nachts? Notdienst sofort vor Ort</h1>
+      <div className="mx-auto mb-8 h-1 w-80 bg-brand-yellow rounded" /> 
       <p className="text-slate-700 mb-4 leading-relaxed">
         Ein Kurzschluss in der Nacht ist nicht nur unangenehm, sondern kann brandgefährlich sein. Wenn Sicherungen rausfliegen, Funken auftreten, Schmorgeruch entsteht oder Großteile der Wohnung ohne Strom sind – handeln Sie sofort. Unser 24h Notdienst ist für solche Notfälle da.
       </p>

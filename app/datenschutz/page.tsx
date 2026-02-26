@@ -1,7 +1,8 @@
 export default function PrivacyPage() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-3xl">
-      <h1 className="text-3xl font-bold mb-8 border-b pb-4">Datenschutzerklärung</h1>
+      <h2 className="text-[clamp(1.8rem,5vw,2.5rem)] md:text-5xl font-extrabold tracking-tight leading-tight text-center text-brand-dark mb-4">Datenschutzerklärung</h2>
+      <div className="mx-auto mb-8 h-1 w-40 bg-brand-yellow rounded" />
       <div className="space-y-6 text-slate-700">
         <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003).</p>
 
