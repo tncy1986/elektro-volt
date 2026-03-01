@@ -135,7 +135,7 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className="lg:order-2">
+          <div className="order-2 lg:order-2">
             <div className="bg-white p-6 rounded-xl shadow-[0_4px_14px_rgba(15,23,42,0.06)] border border-slate-100">
               {features.map((feature, idx) => (
                 <div
@@ -159,7 +159,7 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
           </div>
 
            <div
-             className="relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.18)] group cursor-pointer lg:order-1"
+             className="relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.18)] group cursor-pointer order-1 lg:order-1"
              style={{ height: '400px', width: '100%' }}
              onClick={handleOpenModal}
              onTouchStart={handleTouchStart}
