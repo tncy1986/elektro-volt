@@ -2,6 +2,11 @@
 
 This is a modern Next.js application for an electrical services company.
 
+## Project Documentation
+
+- Full architecture & flow documentation: [PROJECT_DOCUMENTATION.md](./PROJECT_DOCUMENTATION.md)
+- Image license tracking: [IMAGE_LICENSES.md](./IMAGE_LICENSES.md)
+
 ## Features
 
 - **Next.js 15** with App Router
