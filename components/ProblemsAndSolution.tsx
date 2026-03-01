@@ -99,7 +99,15 @@ const ProblemsAndSolution = () => {
 
           <div className="bg-white border border-slate-300 rounded-xl p-6 md:p-8 h-full">
             <h3 className="text-xl md:text-2xl font-extrabold text-brand-dark mb-6">
-              {GOOGLE_REVIEW_CARD_HEADING}
+              <a
+                href={GOOGLE_REVIEWS.reviewLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+                aria-label={`Google Bewertungen für ${COMPANY.nameWithoutKG} öffnen`}
+              >
+                {GOOGLE_REVIEW_CARD_HEADING}
+              </a>
             </h3>
 
             {GOOGLE_REVIEWS.screenshotUrl ? (
@@ -119,9 +127,15 @@ const ProblemsAndSolution = () => {
               ⭐⭐⭐⭐⭐ {GOOGLE_REVIEWS.rating} ({GOOGLE_REVIEWS.totalReviews})
             </p>
 
-            <p className="text-xs md:text-sm font-semibold text-slate-600 mb-6">
+            <a
+              href={GOOGLE_REVIEWS.reviewLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-xs md:text-sm font-semibold text-slate-600 hover:underline mb-6"
+              aria-label={`Google Bewertungen für ${COMPANY.nameWithoutKG} öffnen`}
+            >
               Bewerten Sie {COMPANY.nameWithoutKG} direkt auf Google.
-            </p>
+            </a>
 
             <div className="space-y-3">
               {GOOGLE_REVIEW_TRUST_POINTS.map((point) => (

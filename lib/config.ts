@@ -98,7 +98,7 @@ export const TRUST_INTRO = "Ihr Elektriker in Wien – schnell & ehrlich";
 export const GOOGLE_REVIEWS = {
   reviewLink:
     process.env.NEXT_PUBLIC_GOOGLE_REVIEW_LINK ||
-    "https://search.google.com/local/writereview?placeid=DEINE_PLACE_ID",
+    "https://www.google.com/search?sca_esv=00ba28ae3e54f93e&q=elektro+volt&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOa1XusBEGOCDQDmr2CdC0BbWg_aoW-1eXOFIHK2muwYkx1JPJgqa7Yf9fDnqpnTurQP84EY%3D&uds=ALYpb_kPfttAwudk1x-HGnga9iDDzJqwmD9b_GilTVICYMt3e4i4g29UwL07pGHG6rPl5Jt4FxjSuWuVdFtUsHXY5nB8ElxUxiZ08SzuPTfp1R3k1J7Kep4&sa=X&ved=2ahUKEwiV_Ny9uf6SAxVXVfEDHaUqBwcQ3PALegQIKhAF",
   screenshotUrl:
     process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_SCREENSHOT || "", rating: "4,9",
   totalReviews: process.env.NEXT_PUBLIC_GOOGLE_TOTAL_REVIEWS || "40+",

@@ -9,13 +9,32 @@ interface MessageState {
   text: string;
 }
 
+const generateVerificationCode = () =>
+  String(Math.floor(1000 + Math.random() * 9000));
+
 const Hero = () => {
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<MessageState>({ type: null, text: '' });
+  const [isHumanChecked, setIsHumanChecked] = useState(false);
+  const [verificationCode, setVerificationCode] = useState(generateVerificationCode);
+  const [verificationInput, setVerificationInput] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (submitting) return;
+
+    if (!isHumanChecked) {
+      setMessage({ type: 'error', text: 'Bitte bestätigen Sie zuerst „Ich bin kein Roboter“.' });
+      return;
+    }
+
+    if (verificationInput.trim() !== verificationCode) {
+      setMessage({ type: 'error', text: 'Die eingegebene Zahl ist nicht korrekt. Bitte erneut versuchen.' });
+      setVerificationInput('');
+      setVerificationCode(generateVerificationCode());
+      return;
+    }
+
     setSubmitting(true);
     try {
       const form = e.currentTarget;
@@ -31,6 +50,9 @@ const Hero = () => {
 
       if (res.ok) {
         form.reset();
+        setIsHumanChecked(false);
+        setVerificationInput('');
+        setVerificationCode(generateVerificationCode());
         setMessage({ type: 'success', text: 'Ihre Anfrage wurde erfolgreich versendet! Wir melden uns schnellstmöglich bei Ihnen.' });
       } else {
         const data = await res.json().catch(() => ({}));
@@ -291,6 +313,36 @@ const Hero = () => {
                               invalid:border-white invalid:text-white"
                   />
                   <p className="mt-1 text-xs text-white/80">Pflichtfeld</p>
+                </div>
+
+                <div className="rounded-md border border-white/30 bg-white/10 p-3 space-y-2">
+                  <label className="inline-flex items-center gap-2 text-sm text-white font-semibold">
+                    <input
+                      type="checkbox"
+                      checked={isHumanChecked}
+                      onChange={(e) => setIsHumanChecked(e.target.checked)}
+                      className="h-4 w-4 accent-brand-yellow"
+                    />
+                    Ich bin kein Roboter
+                  </label>
+
+                  <div className="text-xs text-white/85">Bitte diese Zahl eingeben:</div>
+                  <div className="inline-flex items-center justify-center min-w-[88px] px-3 py-1.5 rounded bg-white/20 text-white font-extrabold tracking-widest">
+                    {verificationCode}
+                  </div>
+
+                  <input
+                    id="human-check-number"
+                    name="humanCheckNumber"
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="off"
+                    value={verificationInput}
+                    onChange={(e) => setVerificationInput(e.target.value.replace(/\D/g, ''))}
+                    placeholder="Zahl eingeben"
+                    className="w-full pl-3 pr-3 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-sm text-white placeholder:text-white/60
+                              focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 focus:border-brand-yellow focus:bg-white/30"
+                  />
                 </div>
 
                 <button

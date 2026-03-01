@@ -35,6 +35,7 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
   const [images, setImages] = useState<string[]>(initialImages);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [isSwipingMain, setIsSwipingMain] = useState<boolean>(false);
 
   useEffect(() => {
     setImages(initialImages);
@@ -79,19 +80,29 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
     setCurrentImage(index);
   };
 
-  // Touch/Swipe-Funktionalität
-  const handleTouchStart = (e: React.TouchEvent<HTMLImageElement>) => {
+  // Touch/Swipe-Funktionalität (Hauptbild + Modal)
+  const handleTouchStart = (e: React.TouchEvent<HTMLElement>) => {
     const touch = e.touches[0];
     setTouchStart(touch ? touch.clientX : null);
+    setIsSwipingMain(false);
   };
 
-  const handleTouchEnd = (e: React.TouchEvent<HTMLImageElement>) => {
+  const handleTouchMove = (e: React.TouchEvent<HTMLElement>) => {
+    if (touchStart === null) return;
+    const touch = e.touches[0];
+    const touchX = touch ? touch.clientX : null;
+    if (touchX !== null && Math.abs(touchStart - touchX) > 10) {
+      setIsSwipingMain(true);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
     const touch = e.changedTouches[0];
     const touchEndX = touch ? touch.clientX : null;
     if (touchStart !== null && touchEndX !== null) {
       const distance = touchStart - touchEndX;
-      const isSwipeLeft = distance > 50; // Mindestens 50px nach links
-      const isSwipeRight = distance < -50; // Mindestens 50px nach rechts
+      const isSwipeLeft = distance > 40; // Mindestens 40px nach links
+      const isSwipeRight = distance < -40; // Mindestens 40px nach rechts
       
       if (isSwipeLeft) {
         goToNext();
@@ -100,6 +111,12 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
       }
     }
     setTouchStart(null);
+    setTimeout(() => setIsSwipingMain(false), 120);
+  };
+
+  const handleOpenModal = () => {
+    if (isSwipingMain) return;
+    setIsModalOpen(true);
   };
   const displayedSrc = images.length ? images[currentImage] : COMPANY.heroImage;
   return (
@@ -138,7 +155,14 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
             </div>
           </div>
 
-           <div className="relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.18)] group cursor-pointer" style={{ height: '400px', width: '100%' }} onClick={() => setIsModalOpen(true)}>
+           <div
+             className="relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(15,23,42,0.18)] group cursor-pointer"
+             style={{ height: '400px', width: '100%' }}
+             onClick={handleOpenModal}
+             onTouchStart={handleTouchStart}
+             onTouchMove={handleTouchMove}
+             onTouchEnd={handleTouchEnd}
+           >
              <img
                src={displayedSrc}
                alt="Elektriker bei der Arbeit"
@@ -148,13 +172,19 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
 
              {/* Navigation Pfeile */}
              <button
-               onClick={goToPrevious}
+               onClick={(e) => {
+                 e.stopPropagation();
+                 goToPrevious();
+               }}
                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-slate-800/80 hover:bg-slate-900 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
              >
                <ChevronLeft className="w-6 h-6" />
              </button>
              <button
-               onClick={goToNext}
+               onClick={(e) => {
+                 e.stopPropagation();
+                 goToNext();
+               }}
                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-slate-800/80 hover:bg-slate-900 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
              >
                <ChevronRight className="w-6 h-6" />
@@ -165,7 +195,10 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
                {images.map((_, index) => (
                  <button
                    key={index}
-                   onClick={() => goToImage(index)}
+                   onClick={(e) => {
+                     e.stopPropagation();
+                     goToImage(index);
+                   }}
                    className={`w-3 h-3 rounded-full transition-all ${
                      index === currentImage
                        ? 'bg-brand-yellow w-8'
@@ -201,6 +234,7 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
               alt="Vergrößertes Bild"
               className="w-full h-auto max-h-[70vh] object-contain rounded-lg mt-6 cursor-grab select-none"
               onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
               draggable={false}
             />
