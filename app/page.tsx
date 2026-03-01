@@ -36,8 +36,8 @@ export default async function HomePage() {
     <>
       <Hero />
       <ProblemsAndSolution />
-      <Services showLearnMore={true} />
       <WhyUs initialImages={images} />
+      <Services showLearnMore={true} />
       {/*<Contact />*/}
     </>
   );

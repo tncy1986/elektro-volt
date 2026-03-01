@@ -79,10 +79,10 @@ const ProblemsAndSolution = () => {
             </p>
           </div>
 
-          {/* Block 2: Warum Kunden uns wählen */}
+          {/* Block 2: Ihre Vorteile auf einen Blick */}
           <div className="bg-white border border-slate-300 rounded-xl p-6 md:p-8 h-full">
             <h3 className="text-xl md:text-2xl font-extrabold text-brand-dark mb-6">
-              👷 Warum Kunden<br/>uns wählen
+              👷 Ihre Vorteile<br/>auf einen Blick
             </h3>
             <p className="text-brand-yellow font-extrabold text-sm mb-6">
               {TRUST_INTRO}

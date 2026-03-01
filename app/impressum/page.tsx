@@ -49,6 +49,8 @@ export default function ImprintPage() {
         <div>
           <h2 className="text-xl font-bold text-brand-dark mb-2">Gewerbeordnung</h2>
           <p>Elektrotechnik eingeschränkt auf die Installation elektrischer Starkstromanlagen und Einrichtungen, beschränkt auf Nennspannungen bis einschließlich 1500 Volt und zwar im Anschluss an bestehende Anlagen zur Gewinnung oder Verteilung elektrische Energie, zur Gewinnung elektrischer Energie mit einer Nennleistung bis einschließlich 150 Kilowatt, die Errichtung von Blitzschutzanlagen und die Erichtung von Brandmeldeanlagen</p>
+          <br />
+          <p>Alle Bildrechte liegen bei Elektro Volt KG.</p>
         </div>
       </div>
     </div>
