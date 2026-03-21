@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
 import { COMPANY } from '@/lib/config';
 
@@ -35,22 +34,6 @@ export async function POST(request: NextRequest) {
       message,
     ].join('\n');
 
-    // Option 1: Use Resend if API key is available (recommended)
-    if (process.env.RESEND_API_KEY) {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      
-      await resend.emails.send({
-        from: process.env.RESEND_FROM || 'onboarding@resend.dev',
-        to: toAddress,
-        replyTo: email,
-        subject,
-        text: emailText,
-      });
-
-      return NextResponse.json({ ok: true });
-    }
-
-    // Option 2: Fallback to SMTP
     const smtpHost = process.env.SMTP_HOST;
     const smtpPort = Number(process.env.SMTP_PORT || 587);
     const smtpUser = process.env.SMTP_USER;
@@ -78,7 +61,7 @@ export async function POST(request: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `${name} <${smtpUser}>`,
+      from: `Elektro Volt Website <${smtpUser}>`,
       to: toAddress,
       replyTo: email,
       subject,

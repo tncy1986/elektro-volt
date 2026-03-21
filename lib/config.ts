@@ -7,7 +7,7 @@ export const COMPANY = {
   slogan: process.env.NEXT_PUBLIC_COMPANY_SLOGAN || "Ihr zuverlässiger Partner für Elektroinstallationen",
   phone: process.env.NEXT_PUBLIC_COMPANY_PHONE || "0699 173 70101",
   phoneDisplay: process.env.NEXT_PUBLIC_COMPANY_PHONE_DISPLAY || "0699 173 70101",
-  email: process.env.NEXT_PUBLIC_COMPANY_EMAIL || "tncy_isler@hotmail.com", //"office@elektrovolt.co.at",
+  email: process.env.NEXT_PUBLIC_COMPANY_EMAIL || "info@elektrovolt.at",
   address: process.env.NEXT_PUBLIC_COMPANY_ADDRESS || "1120 Wien",
   addressFull: process.env.NEXT_PUBLIC_COMPANY_ADDRESS_FULL || "Pirkebnerstrasse 1-3/1/2, 1120 Wien",
   uidNummer: process.env.NEXT_PUBLIC_COMPANY_UID_NUMMER || "ATU71545447",
