@@ -68,6 +68,24 @@ const WhyUs = ({ initialImages = [] }: WhyUsProps) => {
     };
   }, [isModalOpen]);
 
+  // Pfeiltasten-Navigation für Bilder
+  useEffect(() => {
+    if (images.length <= 1) return;
+
+    const handleArrowKeys = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        goToPrevious();
+      } else if (e.key === 'ArrowRight') {
+        goToNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleArrowKeys);
+    return () => {
+      window.removeEventListener('keydown', handleArrowKeys);
+    };
+  }, [images.length]);
+
   const goToPrevious = () => {
     if (images.length <= 1) return;
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
