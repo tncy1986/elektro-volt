@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'FAQ - Häufige Fragen | Elektriker Wien',
+  description: 'Häufig gestellte Fragen zu unserem Elektriker-Service in Wien. 24/7 Notdienst, Preise, Reaktionszeit und mehr.',
+  robots: { index: true, follow: true },
+};
+
 export default function FaqPage() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-3xl">

@@ -10,7 +10,7 @@ import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
 // Use system fonts via Tailwind `font-sans` (defined in tailwind config)
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://elektrovolt.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://elektrovolt.at';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -28,7 +28,14 @@ export const metadata: Metadata = {
     "Störungsdienst Elektriker",
     "Elektriker 1120 Wien",
     "Elektriker Wien günstig",
-    "Sicherungskasten Wien"
+    "Sicherungskasten Wien",
+    "Stromausfall Wien",
+    "Stromausfall Notdienst Wien",
+    "Strom Notfall Wien",
+    "kein Strom Wien",
+    "Elektrischer Notfall Wien",
+    "Kurzschluss Wien",
+    "Strom ausgefallen Wien"
   ],
   authors: [{ name: COMPANY.name }],
   creator: COMPANY.name,
@@ -71,8 +78,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Später hier Google Search Console Verification Code einfügen
-    // google: 'your-google-verification-code',
+    google: '2ee7c80abb3d1a39',
   },
 };
 

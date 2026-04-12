@@ -3,20 +3,23 @@ import Link from 'next/link';
 import { COMPANY } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Elektriker Wien | 24/7 Notdienst & Reparaturen',
+  title: 'Elektriker Notdienst Wien | 24/7 Hilfe bei Stromausfall',
   description:
-    'Zuverlässiger Elektriker in Wien mit 24/7 Notdienst. Schnelle Hilfe bei Stromausfall, Kurzschluss, Sicherungen & Elektroreparaturen. Meisterbetrieb – faire Preise, transparente Abwicklung.',
+    'Elektriker Notdienst für akute Probleme: Stromausfall, Kurzschluss, FI-Störung und defekte Sicherungen. In Wien 24/7 schnell vor Ort, transparent und zuverlässig.',
   keywords: [
     'Elektriker Wien',
-    'Notdienst Wien',
+    'Elektriker Notdienst',
+    'Elektriker Notdienst Wien',
+    'Notdienst Elektriker',
     'Stromausfall Wien',
-    'E-Installation Wien',
-    'Elektroreparatur',
+    'Stromausfall',
+    'Elektroreparatur Wien',
+    'Elektroinstallateur Wien',
   ],
   openGraph: {
-    title: 'Elektriker Wien | 24/7 Notdienst',
+    title: 'Elektriker Notdienst Wien | 24/7 Hilfe',
     description:
-      'Ihr zuverlässiger Elektriker in Wien. Schnelle Anfahrt, transparente Preise, Meisterbetrieb für Notfälle und Reparaturen.',
+      'Elektriker Notdienst bei Stromausfall und Störungen. In Wien schnell vor Ort mit transparenter Abwicklung.',
   },
 };
 

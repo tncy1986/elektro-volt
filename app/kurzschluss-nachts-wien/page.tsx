@@ -3,19 +3,28 @@ import Link from 'next/link';
 import { COMPANY } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Kurzschluss nachts | 24h Elektriker Notdienst Wien',
+  title: 'Stromausfall & Kurzschluss | 24h Notdienst in Wien',
   description:
-    'Kurzschluss nachts? Unser 24h Notdienst ist sofort erreichbar. Schnelle Fehlerbehebung bei Stromausfall, Sicherungsproblemen und Notfällen in Wien und Umgebung.',
+    'Stromausfall oder Kurzschluss? Unser Elektriker Notdienst ist 24h erreichbar und hilft bei Strom Notfall, auch nachts und am Wochenende. In Wien sind wir besonders schnell vor Ort.',
   keywords: [
-    'Kurzschluss nachts',
+    'Stromausfall Wien',
+    'Stromausfall',
+    'Strom Notfall Wien',
+    'Strom Notfall',
+    'Stromausfall Notdienst Wien',
+    'kein Strom Wien',
+    'kein Strom',
+    'Kurzschluss Wien',
+    'Kurzschluss',
     'Elektriker Notdienst Nacht',
-    '24h Elektriker',
-    'Stromausfall nachts',
+    '24h Elektriker Wien',
+    'Stromausfall nachts Wien',
+    'Elektrischer Notfall',
   ],
   openGraph: {
-    title: 'Kurzschluss nachts | 24h Elektriker Notdienst',
+    title: 'Stromausfall & Kurzschluss | 24h Elektriker Notdienst',
     description:
-      'Schnelle Hilfe bei Kurzschluss und Stromausfall – auch nachts, am Wochenende und an Feiertagen.',
+      'Soforthilfe bei Stromausfall, Kurzschluss und Strom Notfall. 24h Notdienst, in Wien schnell vor Ort.',
   },
 };
 

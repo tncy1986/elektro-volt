@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import { COMPANY } from '@/lib/config';
+
+export const metadata: Metadata = {
+  title: 'Impressum',
+  description: `Impressum von ${COMPANY.name}. Firmensitz: ${COMPANY.addressFull}. UID: ${COMPANY.uidNummer}.`,
+  robots: { index: true, follow: true },
+};
 
 export default function ImprintPage() {
   return (

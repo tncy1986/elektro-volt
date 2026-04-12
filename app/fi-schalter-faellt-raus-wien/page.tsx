@@ -3,19 +3,27 @@ import Link from 'next/link';
 import { COMPANY } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'FI-Schalter fällt raus | Elektriker Wien Notdienst',
+  title: 'FI-Schalter fällt raus? | Kein Strom - Elektriker Notdienst Wien',
   description:
-    'FI-Schalter fällt immer wieder raus? Unser Elektriker findet die Ursache – ob Isolationsfehler, defekte Geräte oder Feuchtigkeit. 24/7 Notdienst in Wien.',
+    'FI-Schalter fällt raus und kein Strom mehr? Wir finden die Ursache bei Stromausfall, defekten Geräten oder Feuchtigkeit. 24/7 Elektriker Notdienst, in Wien schnell vor Ort.',
   keywords: [
     'FI Schalter fällt raus',
+    'FI Schalter fällt raus was tun',
+    'FI Schalter Problem Wien',
     'FI Schalter Problem',
     'Elektriker Fehlersuche Wien',
     'Sicherung springt raus',
+    'kein Strom Wien',
+    'kein Strom',
+    'Strom Notfall Wien',
+    'Strom Notfall',
+    'Stromausfall Wohnung Wien',
+    'Stromausfall Wien',
   ],
   openGraph: {
-    title: 'FI-Schalter fällt raus | Elektriker Notdienst Wien',
+    title: 'FI-Schalter fällt raus? | Elektriker Notdienst bei Stromausfall',
     description:
-      'Professionelle Fehlersuche beim wiederholten Auslösen des FI-Schalters. Schnell vor Ort in Wien.',
+      'FI-Schalter löst aus und kein Strom? Professionelle Fehlersuche mit 24/7 Notdienst, in Wien schnell verfügbar.',
   },
 };
 

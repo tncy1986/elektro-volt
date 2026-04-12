@@ -5,12 +5,12 @@ import { COMPANY } from '@/lib/config';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Unsere Leistungen - Elektroinstallation, Notdienst & E-Befund Wien',
-  description: 'Professionelle Elektro-Leistungen in Wien: Installationen, 24/7 Notdienst, E-Befund, Smart Home, Sicherungskästen. Alle Arbeiten aus Meisterhand.',
-  keywords: ['Elektroinstallation Wien', 'E-Befund Wien', 'Smart Home Wien', 'Elektriker Leistungen', 'Sicherungskasten'],
+  title: 'Elektriker Leistungen | Notdienst, Elektroinstallation & E-Befund Wien',
+  description: 'Alle Elektriker-Leistungen: Notdienst bei Stromausfall, Elektroinstallation, E-Befund, Sicherungskasten und Reparaturen. In Wien 24/7 verfügbar, auch bei Strom Notfall.',
+  keywords: ['Elektriker Leistungen', 'Elektriker Leistungen Wien', 'Elektroinstallation', 'Elektroinstallation Wien', 'E-Befund', 'E-Befund Wien', 'Stromausfall Notdienst', 'Strom Notfall', 'Sicherungskasten'],
   openGraph: {
-    title: 'Elektro-Leistungen Wien | Vom Notdienst bis Smart Home',
-    description: 'Alle Elektro-Leistungen für Wien: Installation, Wartung, Notdienst, E-Befund & mehr.',
+    title: 'Elektriker Leistungen | Vom Notdienst bis E-Befund',
+    description: 'Leistungsübersicht für Notdienst, Installation, Wartung und E-Befund. In Wien schnell und zuverlässig.',
   },
 };
 

@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Datenschutzerklärung',
+  description: 'Datenschutzerklärung von Elektro Volt KG. Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß DSGVO.',
+  robots: { index: true, follow: true },
+};
+
 export default function PrivacyPage() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-3xl">
